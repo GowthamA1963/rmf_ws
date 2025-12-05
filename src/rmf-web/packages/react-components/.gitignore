@@ -1,0 +1,8 @@
+/dist/
+lcov.info
+coverage-final.json
+
+# browserstack log
+/local.log
+
+*storybook.log

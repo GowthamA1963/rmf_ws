@@ -1,0 +1,40 @@
+name: react-components
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/react-components.yml'
+      - 'packages/react-components/**'
+      - 'packages/rmf-models/**'
+  push:
+    branches:
+      - main
+env:
+  CI: true
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: packages/react-components
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_BUILD: ${{ github.head_ref }}:${{ github.event.number }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: bootstrap
+        uses: ./.github/actions/bootstrap
+        with:
+          package: react-components
+      - name: build storybook
+        run: pnpm run build:storybook
+      - name: lint
+        run: pnpm run lint
+      - name: test
+        run: pnpm run test:coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          flags: react-components

@@ -1,0 +1,60 @@
+rmf_fleet:
+  name: "my_robot_fleet"
+  limits:
+    linear: [0.8, 0.1]      # vel, accel
+    angular: [0.4, 0.1]     # vel, accel
+  profile:
+    footprint: 0.3
+    vicinity: 0.5
+  reversible: true
+
+  battery_system:
+    voltage: 24.0
+    capacity: 20.0
+    charging_current: 3.0
+  mechanical_system:
+    mass: 20.0
+    moment_of_inertia: 10.0
+    friction_coefficient: 0.22
+  ambient_system:
+    power: 10.0
+  tool_system:
+    power: 0.0
+
+  recharge_threshold: 0.10
+  recharge_soc: 1.0
+  publish_fleet_state: 1.0
+  account_for_battery_drain: false
+
+  task_capabilities:
+    loop: true
+    delivery: true
+    clean: false
+    finishing_request: "park"
+
+  fleet_manager:
+    prefix: "ros2"
+    user: ""
+    password: ""
+
+reference_coordinates:
+  rmf:
+    - [4.947627677647645, -3.848703947879665, 0]
+  robot:
+    - [-0.04634631221209842, 0.03840620011662053, 0]
+
+robots:
+  robot1:
+    rmf_config:
+      start:
+        map_name: "L1"
+        waypoint: "charging_dock"
+        orientation: 0.0
+      charger:
+        waypoint: "charging_dock"
+      robot_state_update_frequency: 2
+
+    robot_config:
+      max_delay: 5
+
+

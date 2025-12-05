@@ -1,0 +1,53 @@
+building_name: office_test
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - {speed_limit: 2.0, undock_name: charging_dock}
+    - - 1
+      - 0
+      - {dock_name: charging_dock, speed_limit: 0}
+    - - 1
+      - 2
+      - {speed_limit: 2.0}
+    - - 2
+      - 1
+      - {speed_limit: 2.0}
+    - - 2
+      - 3
+      - {speed_limit: 2.0}
+    - - 3
+      - 2
+      - {speed_limit: 2.0}
+    - - 3
+      - 4
+      - {speed_limit: 2.0}
+    - - 4
+      - 3
+      - {speed_limit: 2.0}
+    - - 2
+      - 5
+      - {speed_limit: 2.0}
+    - - 5
+      - 2
+      - {speed_limit: 2.0}
+    vertices:
+    - - 4.869607337441996
+      - -3.654576562684676
+      - {dock_name: charging_dock, is_charger: true, name: charging_dock}
+    - - 4.700138972120067
+      - -7.901918026164027
+      - {is_passthrough_point: true, name: L1}
+    - - 17.530766116150584
+      - -9.140409811731747
+      - {is_passthrough_point: true, name: L2}
+    - - 32.09531171020248
+      - -11.072449010490306
+      - {name: L4}
+    - - 31.299933526685653
+      - -16.767684260281264
+      - {name: L5}
+    - - 16.962210981830474
+      - -13.400130702191904
+      - {name: L3}
