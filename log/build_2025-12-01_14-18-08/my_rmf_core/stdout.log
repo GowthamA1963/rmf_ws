@@ -1,0 +1,9 @@
+running develop
+running egg_info
+creating my_rmf_core.egg-info
+writing my_rmf_core.egg-info/PKG-INFO
+writing dependency_links to my_rmf_core.egg-info/dependency_links.txt
+writing entry points to my_rmf_core.egg-info/entry_points.txt
+writing requirements to my_rmf_core.egg-info/requires.txt
+writing top-level names to my_rmf_core.egg-info/top_level.txt
+writing manifest file 'my_rmf_core.egg-info/SOURCES.txt'

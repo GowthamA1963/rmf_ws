@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+launch/rmf_core.launch.py
+my_rmf_core/__init__.py
+my_rmf_core.egg-info/PKG-INFO
+my_rmf_core.egg-info/SOURCES.txt
+my_rmf_core.egg-info/dependency_links.txt
+my_rmf_core.egg-info/entry_points.txt
+my_rmf_core.egg-info/requires.txt
+my_rmf_core.egg-info/top_level.txt
+my_rmf_core.egg-info/zip-safe
+resource/my_rmf_core

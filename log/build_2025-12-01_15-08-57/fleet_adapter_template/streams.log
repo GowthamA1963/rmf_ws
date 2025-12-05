@@ -1,0 +1,17 @@
+[1.310s] Invoking command in '/home/robot1/rmf_ws/build/fleet_adapter_template': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot1/rmf_ws/build/fleet_adapter_template/build --no-deps symlink_data
+[1.665s] running develop
+[1.931s] running egg_info
+[1.932s] writing fleet_adapter_template.egg-info/PKG-INFO
+[1.933s] writing dependency_links to fleet_adapter_template.egg-info/dependency_links.txt
+[1.933s] writing entry points to fleet_adapter_template.egg-info/entry_points.txt
+[1.933s] writing requirements to fleet_adapter_template.egg-info/requires.txt
+[1.933s] writing top-level names to fleet_adapter_template.egg-info/top_level.txt
+[1.941s] reading manifest file 'fleet_adapter_template.egg-info/SOURCES.txt'
+[1.944s] writing manifest file 'fleet_adapter_template.egg-info/SOURCES.txt'
+[1.947s] running build_ext
+[1.948s] Creating /home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages/fleet-adapter-template.egg-link (link to .)
+[1.948s] Installing fleet_adapter script to /home/robot1/rmf_ws/install/fleet_adapter_template/lib/fleet_adapter_template
+[1.948s] 
+[1.948s] Installed /home/robot1/rmf_ws/build/fleet_adapter_template
+[1.948s] running symlink_data
+[2.007s] Invoked command in '/home/robot1/rmf_ws/build/fleet_adapter_template' returned '0': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot1/rmf_ws/build/fleet_adapter_template/build --no-deps symlink_data

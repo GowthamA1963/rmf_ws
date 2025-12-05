@@ -1,0 +1,21 @@
+[0.837s] Invoking command in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/fleet_adapter_template build --build-base /home/robot1/rmf_ws/build/fleet_adapter_template/build install --record /home/robot1/rmf_ws/build/fleet_adapter_template/install.log --single-version-externally-managed install_data
+[1.157s] running egg_info
+[1.158s] writing ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/PKG-INFO
+[1.158s] writing dependency_links to ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/dependency_links.txt
+[1.158s] writing entry points to ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/entry_points.txt
+[1.159s] writing requirements to ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/requires.txt
+[1.159s] writing top-level names to ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/top_level.txt
+[1.166s] reading manifest file '../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/SOURCES.txt'
+[1.167s] writing manifest file '../../../build/fleet_adapter_template/fleet_adapter_template.egg-info/SOURCES.txt'
+[1.167s] running build
+[1.167s] running build_py
+[1.168s] running install
+[1.168s] running install_lib
+[1.170s] running install_data
+[1.170s] running install_egg_info
+[1.172s] removing '/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages/fleet_adapter_template-0.0.0-py3.10.egg-info' (and everything under it)
+[1.172s] Copying ../../../build/fleet_adapter_template/fleet_adapter_template.egg-info to /home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages/fleet_adapter_template-0.0.0-py3.10.egg-info
+[1.173s] running install_scripts
+[1.194s] Installing fleet_adapter script to /home/robot1/rmf_ws/install/fleet_adapter_template/lib/fleet_adapter_template
+[1.195s] writing list of installed files to '/home/robot1/rmf_ws/build/fleet_adapter_template/install.log'
+[1.225s] Invoked command in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template' returned '0': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/fleet_adapter_template build --build-base /home/robot1/rmf_ws/build/fleet_adapter_template/build install --record /home/robot1/rmf_ws/build/fleet_adapter_template/install.log --single-version-externally-managed install_data

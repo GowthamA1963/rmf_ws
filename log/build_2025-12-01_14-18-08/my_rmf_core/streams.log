@@ -1,0 +1,12 @@
+[1.768s] Invoking command in '/home/robot1/rmf_ws/build/my_rmf_core': PYTHONPATH=/home/robot1/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot1/rmf_ws/build/my_rmf_core/build --no-deps symlink_data
+[2.136s] running develop
+[2.395s] running egg_info
+[2.395s] creating my_rmf_core.egg-info
+[2.395s] writing my_rmf_core.egg-info/PKG-INFO
+[2.395s] writing dependency_links to my_rmf_core.egg-info/dependency_links.txt
+[2.395s] writing entry points to my_rmf_core.egg-info/entry_points.txt
+[2.396s] writing requirements to my_rmf_core.egg-info/requires.txt
+[2.396s] writing top-level names to my_rmf_core.egg-info/top_level.txt
+[2.403s] writing manifest file 'my_rmf_core.egg-info/SOURCES.txt'
+[2.405s] error: package directory 'my_rmf_core' does not exist
+[2.447s] Invoked command in '/home/robot1/rmf_ws/build/my_rmf_core' returned '1': PYTHONPATH=/home/robot1/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot1/rmf_ws/build/my_rmf_core/build --no-deps symlink_data

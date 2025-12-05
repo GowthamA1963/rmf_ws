@@ -1,0 +1,3 @@
+[console_scripts]
+fleet_adapter = fleet_adapter_template.fleet_adapter:main
+

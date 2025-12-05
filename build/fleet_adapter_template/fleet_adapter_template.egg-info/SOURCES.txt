@@ -1,0 +1,17 @@
+config.yaml
+package.xml
+setup.cfg
+setup.py
+fleet_adapter_template/RobotClientAPI.py
+fleet_adapter_template/RobotCommandHandle.py
+fleet_adapter_template/__init__.py
+fleet_adapter_template/fleet_adapter.py
+fleet_adapter_template/fleet_manager.py
+fleet_adapter_template.egg-info/PKG-INFO
+fleet_adapter_template.egg-info/SOURCES.txt
+fleet_adapter_template.egg-info/dependency_links.txt
+fleet_adapter_template.egg-info/entry_points.txt
+fleet_adapter_template.egg-info/requires.txt
+fleet_adapter_template.egg-info/top_level.txt
+fleet_adapter_template.egg-info/zip-safe
+resource/fleet_adapter_template

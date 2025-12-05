@@ -1,0 +1,4 @@
+[0.000000] (-) TimerEvent: {}
+[0.000364] (-) JobUnselected: {'identifier': 'fleet_adapter_template'}
+[0.000408] (-) JobUnselected: {'identifier': 'my_rmf_core'}
+[0.000694] (-) EventReactorShutdown: {}

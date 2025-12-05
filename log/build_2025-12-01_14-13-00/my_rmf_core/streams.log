@@ -1,0 +1,9 @@
+[1.526s] Invoking command in '/home/robot1/rmf_ws/build/my_rmf_core': PYTHONPATH=/home/robot1/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot1/rmf_ws/build/my_rmf_core/build --no-deps symlink_data
+[1.823s] /home/robot1/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[1.823s]   warnings.warn(msg)
+[1.931s] usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+[1.932s]    or: setup.py --help [cmd1 cmd2 ...]
+[1.932s]    or: setup.py --help-commands
+[1.932s]    or: setup.py cmd --help
+[1.932s] 
+[1.932s] error: option --editable not recognized
