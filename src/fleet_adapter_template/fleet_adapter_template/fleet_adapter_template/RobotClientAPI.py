@@ -4,6 +4,7 @@ import math
 import threading
 from typing import Dict, Optional
 
+import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
 
@@ -19,11 +20,15 @@ class RobotAPI:
         self._poses: Dict[str, PoseWithCovarianceStamped] = {}
         self._pose_subs: Dict[str, object] = {}
 
-        self._nav_clients: Dict[str, ActionClient] = {}
+        # For navigation we keep one shared ActionClient for the global /navigate_to_pose
+        self._global_nav_client: Optional[ActionClient] = None
+        self._global_nav_topic = "/navigate_to_pose"
+
+        # still keep per-robot result dictionaries
         self._goal_results: Dict[str, Dict[int, str]] = {}
 
         self._node.get_logger().info(
-            "RobotAPI initialized (AMCL + Nav2 fully namespaced)"
+            "RobotAPI initialized (AMCL namespaced, Nav2 client on /navigate_to_pose)"
         )
 
     # ---------------- AMCL — namespaced ---------------- #
@@ -39,7 +44,7 @@ class RobotAPI:
             )
             self._node.get_logger().info(f"[RobotAPI] Subscribed: {topic}")
 
-    def _amcl_cb(self, msg, robot_name):
+    def _amcl_cb(self, msg: PoseWithCovarianceStamped, robot_name: str):
         with self._pose_lock:
             self._poses[robot_name] = msg
 
@@ -57,56 +62,103 @@ class RobotAPI:
         q = msg.pose.pose.orientation
 
         yaw = math.atan2(
-            2.0*(q.w*q.z + q.x*q.y),
-            1.0 - 2.0*(q.y*q.y + q.z*q.z)
+            2.0 * (q.w * q.z + q.x * q.y),
+            1.0 - 2.0 * (q.y * q.y + q.z * q.z)
         )
         return [p.x, p.y, yaw]
 
     def battery_soc(self, robot_name: str):
         return 1.0
 
-    # ---------------- Nav2 — namespaced ---------------- #
+    # ---------------- Nav2 — shared global client ---------------- #
 
-    def _get_nav_client(self, robot_name: str):
-        if robot_name not in self._nav_clients:
-            topic = f"/{robot_name}/navigate_to_pose"
-            self._nav_clients[robot_name] = ActionClient(
-                self._node, NavigateToPose, topic
-            )
-            self._goal_results[robot_name] = {}
-            self._node.get_logger().info(f"[RobotAPI] Nav2 client: {topic}")
-
-        return self._nav_clients[robot_name]
+    def _get_nav_client(self):
+        """
+        Return a single shared ActionClient for the global /navigate_to_pose topic.
+        Create lazily.
+        """
+        if self._global_nav_client is None:
+            self._global_nav_client = ActionClient(self._node, NavigateToPose, self._global_nav_topic)
+            self._node.get_logger().info(f"[RobotAPI] Nav2 client created on: {self._global_nav_topic}")
+        return self._global_nav_client
 
     def navigate(self, robot_name: str, cmd_id: int, pose, map_name, speed_limit=0.0):
-        x, y, yaw = pose[:3]
-        client = self._get_nav_client(robot_name)
+        """
+        Send a NavigateToPose goal using the shared global ActionClient.
+        Defensive: wait for server, validate futures/handles, and guard callbacks.
+        """
+        # ensure per-robot result dict exists
+        if robot_name not in self._goal_results:
+            self._goal_results[robot_name] = {}
 
-        if not client.wait_for_server(timeout_sec=2.0):
-            self._node.get_logger().error(f"Nav2 unavailable for {robot_name}")
+        x, y, yaw = pose[:3]
+        client = self._get_nav_client()
+
+        # Wait robustly for server (increase timeout if required)
+        try:
+            if not client.wait_for_server(timeout_sec=5.0):
+                self._node.get_logger().error(f"[RobotAPI] Nav2 unavailable on {self._global_nav_topic}")
+                return False
+        except Exception as e:
+            self._node.get_logger().error(f"[RobotAPI] Exception while waiting for server: {e}")
             return False
 
         goal = NavigateToPose.Goal()
         goal.pose.header.frame_id = "map"
         goal.pose.header.stamp = self._node.get_clock().now().to_msg()
-        goal.pose.pose.position.x = x
-        goal.pose.pose.position.y = y
-        goal.pose.pose.orientation.z = math.sin(yaw/2.0)
-        goal.pose.pose.orientation.w = math.cos(yaw/2.0)
+        goal.pose.pose.position.x = float(x)
+        goal.pose.pose.position.y = float(y)
+        goal.pose.pose.orientation.z = math.sin(yaw / 2.0)
+        goal.pose.pose.orientation.w = math.cos(yaw / 2.0)
 
-        send_future = client.send_goal_async(goal)
+        try:
+            send_future = client.send_goal_async(goal)
+        except Exception as e:
+            self._node.get_logger().error(f"[RobotAPI] Failed to send goal async for {robot_name}: {e}")
+            self._goal_results[robot_name][cmd_id] = 'error'
+            return False
 
         def goal_response_cb(fut):
-            handle = fut.result()
-            if not handle.accepted:
+            try:
+                handle = fut.result()
+            except Exception as e:
+                self._node.get_logger().error(f"[RobotAPI] Exception getting goal handle for {robot_name}: {e}")
+                self._goal_results[robot_name][cmd_id] = 'error'
+                return
+
+            if handle is None:
+                self._node.get_logger().error(f"[RobotAPI] Goal response for {robot_name} returned None handle")
+                self._goal_results[robot_name][cmd_id] = 'error'
+                return
+
+            # accepted?
+            accepted = getattr(handle, "accepted", False)
+            if not accepted:
+                self._node.get_logger().info(f"[RobotAPI] Goal rejected for {robot_name}")
                 self._goal_results[robot_name][cmd_id] = 'rejected'
                 return
-            result_future = handle.get_result_async()
+
+            # get result future, guard exceptions
+            try:
+                result_future = handle.get_result_async()
+            except Exception as e:
+                self._node.get_logger().error(f"[RobotAPI] Failed to get_result_async for {robot_name}: {e}")
+                self._goal_results[robot_name][cmd_id] = 'error'
+                return
 
             def result_cb(res_fut):
-                res = res_fut.result()
-                status = 'succeeded' if res.status == 4 else f"status_{res.status}"
+                try:
+                    res = res_fut.result()
+                except Exception as e:
+                    self._node.get_logger().error(f"[RobotAPI] Exception in result future for {robot_name}: {e}")
+                    self._goal_results[robot_name][cmd_id] = 'error'
+                    return
+
+                # rclpy statuses: 4 == SUCCEEDED
+                status_val = getattr(res, 'status', None)
+                status = 'succeeded' if status_val == 4 else f"status_{status_val}"
                 self._goal_results[robot_name][cmd_id] = status
+                self._node.get_logger().info(f"[RobotAPI] Goal result for {robot_name} cmd {cmd_id}: {status}")
 
             result_future.add_done_callback(result_cb)
 

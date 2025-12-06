@@ -30,6 +30,7 @@ levels:
       - [65, 66, {bidirectional: [4, true], demo_mock_floor_name: [1, ""], demo_mock_lift_name: [1, ""], graph_idx: [2, 0], orientation: [1, ""], speed_limit: [3, 0]}]
       - [66, 67, {bidirectional: [4, true], demo_mock_floor_name: [1, ""], demo_mock_lift_name: [1, ""], graph_idx: [2, 0], orientation: [1, ""], speed_limit: [3, 0]}]
       - [65, 68, {bidirectional: [4, true], demo_mock_floor_name: [1, ""], demo_mock_lift_name: [1, ""], graph_idx: [2, 0], orientation: [1, ""], speed_limit: [3, 0]}]
+      - [63, 69, {bidirectional: [4, true], demo_mock_floor_name: [1, ""], demo_mock_lift_name: [1, ""], graph_idx: [2, 0], orientation: [1, ""], speed_limit: [3, 0]}]
     layers:
       back:
         color: [1, 0, 0, 0.5]
@@ -107,11 +108,12 @@ levels:
       - [139.62899999999999, 182.28, 0, ""]
       - [80.643000000000001, 15.438000000000001, 0, ""]
       - [97.554000000000002, 73.212999999999994, 0, charging_dock, {dock_name: [1, charging_dock], is_charger: [4, true]}]
-      - [94.159000000000006, 158.30099999999999, 0, L1, {is_passthrough_point: [4, true]}]
+      - [94.159000000000006, 158.30099999999999, 0, L1, {is_charger: [4, true], is_passthrough_point: [4, true]}]
       - [351.19799999999998, 183.11199999999999, 0, L2, {is_passthrough_point: [4, true]}]
       - [642.97299999999996, 221.81700000000001, 0, L4]
       - [627.03899999999999, 335.911, 0, L5]
       - [339.80799999999999, 268.44799999999998, 0, L3]
+      - [170.708, 86.379999999999995, 0, L0]
     walls:
       - [0, 1, {alpha: [3, 1], texture_height: [3, 2.5], texture_name: [1, beige], texture_scale: [3, 1], texture_width: [3, 1]}]
       - [1, 2, {alpha: [3, 1], texture_height: [3, 2.5], texture_name: [1, beige], texture_scale: [3, 1], texture_width: [3, 1]}]
