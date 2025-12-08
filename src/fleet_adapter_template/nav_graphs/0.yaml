@@ -33,21 +33,21 @@ levels:
       - 0
       - {speed_limit: 0}
     vertices:
-    - - 4.70
-      - -7.90
+    - - 4.700138972120067
+      - -7.901918026164027
       - {is_charger: false, is_holding_point: true, is_passthrough_point: true, name: L1}
-    - - 17.53
-      - -9.14
+    - - 17.530766116150584
+      - -9.140409811731747
       - {is_holding_point: true, is_passthrough_point: true, name: L2}
-    - - 32.09
-      - -11.07
+    - - 32.09531171020248
+      - -11.072449010490306
       - {is_holding_point: true, name: L4}
-    - - 31.29
-      - -16.76
+    - - 31.299933526685653
+      - -16.767684260281264
       - {is_holding_point: true, name: L5}
-    - - 16.96
-      - -13.40
+    - - 16.962210981830474
+      - -13.400130702191904
       - {is_holding_point: true, name: L3}
-    - - 4.84
-      - -3.99
+    - - 4.8440997278162214
+      - -3.9942620489926983
       - {is_charger: true, is_holding_point: true, is_parking_spot: false, name: Home}

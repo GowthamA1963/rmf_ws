@@ -48,26 +48,26 @@ robots:
     rmf_config:
       start:
         map_name: "L1"
-        waypoint: "L0"
+        waypoint: "Home"
         orientation: 0.0
       charger:
-        waypoint: "charging_dock"
+        waypoint: "Home"
       robot_state_update_frequency: 2
 
     robot_config:
       max_delay: 5
 
-  robot2:
-    rmf_config:
-      start:
-        map_name: "L1"
-        waypoint: "L1"
-        orientation: 0.0
-      charger:
-        waypoint: "charging_dock"
-      robot_state_update_frequency: 2
+  # robot2:
+  #   rmf_config:
+  #     start:
+  #       map_name: "L1"
+  #       waypoint: "L1"
+  #       orientation: 0.0
+  #     charger:
+  #       waypoint: "charging_dock"
+  #     robot_state_update_frequency: 2
 
-    robot_config:
-      max_delay: 5
+  #   robot_config:
+  #     max_delay: 5
 
 
