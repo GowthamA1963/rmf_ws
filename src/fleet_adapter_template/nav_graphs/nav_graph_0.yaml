@@ -35,7 +35,7 @@ levels:
     vertices:
     - - 4.70
       - -7.90
-      - {is_charger: false, is_holding_point: true, is_passthrough_point: true, name: L1}
+      - {is_dock: true, dock_name: L1_dispenser, is_holding_point: true, is_passthrough_point: true, name: L1}
     - - 17.53
       - -9.14
       - {is_holding_point: true, is_passthrough_point: true, name: L2}
@@ -47,7 +47,7 @@ levels:
       - {is_holding_point: true, name: L5}
     - - 16.96
       - -13.40
-      - {is_holding_point: true, name: L3}
+      - {is_dock: true, dock_name: L3_ingestor, is_holding_point: true, name: L3}
     - - 4.84
       - -3.99
       - {is_charger: true, is_holding_point: true, is_parking_spot: false, name: Home}
