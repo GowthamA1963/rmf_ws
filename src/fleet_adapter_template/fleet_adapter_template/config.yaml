@@ -48,10 +48,10 @@ robots:
     rmf_config:
       start:
         map_name: "L1"
-        waypoint: "Home"
+        waypoint: "HomeRobot1"
         orientation: 0.0
       charger:
-        waypoint: "Home"
+        waypoint: "ChargeRobot1"
       robot_state_update_frequency: 2
 
     robot_config:
@@ -61,10 +61,10 @@ robots:
   #   rmf_config:
   #     start:
   #       map_name: "L1"
-  #       waypoint: "L1"
+  #       waypoint: "HomeRobot2"
   #       orientation: 0.0
   #     charger:
-  #       waypoint: "charging_dock"
+  #       waypoint: "ChargeRobot2"
   #     robot_state_update_frequency: 2
 
   #   robot_config:
