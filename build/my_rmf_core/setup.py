@@ -1,1 +1,0 @@
-/home/robot1/rmf_ws/src/my_rmf_core/setup.py

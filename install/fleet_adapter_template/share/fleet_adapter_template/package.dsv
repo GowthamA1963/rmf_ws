@@ -4,6 +4,3 @@ source;share/fleet_adapter_template/hook/pythonpath.sh
 source;share/fleet_adapter_template/hook/ament_prefix_path.ps1
 source;share/fleet_adapter_template/hook/ament_prefix_path.dsv
 source;share/fleet_adapter_template/hook/ament_prefix_path.sh
-source;../../build/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath_develop.ps1
-source;../../build/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath_develop.dsv
-source;../../build/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath_develop.sh

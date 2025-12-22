@@ -7,6 +7,10 @@ import re  # <-- Added for robot name matching
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
+from rclpy.qos import QoSProfile
+from rclpy.qos import QoSDurabilityPolicy as Durability
+from rclpy.qos import QoSHistoryPolicy as History
+from rclpy.qos import QoSReliabilityPolicy as Reliability
 
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from nav2_msgs.action import NavigateToPose
@@ -14,6 +18,8 @@ from nav2_msgs.action import NavigateToPose
 # RMF delivery messages
 from rmf_dispenser_msgs.msg import DispenserResult
 from rmf_ingestor_msgs.msg import IngestorResult
+from std_msgs.msg import Float32
+from sensor_msgs.msg import BatteryState
 
 
 class RobotAPI:
@@ -33,7 +39,13 @@ class RobotAPI:
         self._poses: Dict[str, PoseWithCovarianceStamped] = {}
         self._pose_subs: Dict[str, object] = {}
 
+        # Battery handling
+        self._battery_lock = threading.Lock()
+        self._battery_levels: Dict[str, float] = {}
+        self._battery_subs: Dict[str, object] = {}
+
         # Nav2 client (shared)
+        self._nav_clients: Dict[str, ActionClient] = {}
         self._global_nav_client: Optional[ActionClient] = None
         self._goal_results: Dict[str, Dict[int, str]] = {}
 
@@ -71,10 +83,17 @@ class RobotAPI:
             )
             return False
 
+        amcl_qos = QoSProfile(
+            history=History.KEEP_LAST,
+            depth=1,
+            reliability=Reliability.RELIABLE,
+            durability=Durability.TRANSIENT_LOCAL
+        )
+
         self._pose_subs[robot_name] = self._node.create_subscription(
             PoseWithCovarianceStamped, topic,
             lambda msg, rn=robot_name: self._amcl_cb(msg, rn),
-            10
+            qos_profile=amcl_qos
         )
         self._node.get_logger().info(f"[RobotAPI] Subscribed: {topic}")
         return True
@@ -102,26 +121,73 @@ class RobotAPI:
         return [p.x, p.y, yaw]
 
     def battery_soc(self, robot_name: str) -> float:
-        return 1.0  # stub
+        if not self._ensure_battery_sub(robot_name):
+            return 1.0
+
+        with self._battery_lock:
+            return self._battery_levels.get(robot_name, 1.0)
+
+    def _ensure_battery_sub(self, robot_name: str) -> bool:
+        if robot_name in self._battery_subs:
+            return True
+
+        # Try to find a battery topic for this robot
+        # We look for /{robot_name}/battery_percentage (Float32) or /{robot_name}/battery_state (BatteryState)
+        target_topics = [
+            (f"/{robot_name}/battery_percentage", Float32),
+            (f"/{robot_name}/battery_state", BatteryState)
+        ]
+
+        active_topics = self._node.get_topic_names_and_types()
+        active_topic_map = {t[0]: t[1] for t in active_topics}
+
+        for topic, msg_type in target_topics:
+            if topic in active_topic_map:
+                self._battery_subs[robot_name] = self._node.create_subscription(
+                    msg_type, topic,
+                    lambda msg, rn=robot_name, mt=msg_type: self._battery_cb(msg, rn, mt),
+                    10
+                )
+                self._node.get_logger().info(f"[RobotAPI] Subscribed to battery: {topic}")
+                return True
+
+        # Optional: Log only once per robot to avoid spam, or debug only
+        self._node.get_logger().debug(f"[RobotAPI] No battery topic found for {robot_name}")
+        return False
+
+    def _battery_cb(self, msg, robot_name, msg_type):
+        level = 1.0
+        if msg_type == Float32:
+            level = msg.data
+        elif msg_type == BatteryState:
+            level = msg.percentage
+
+        with self._battery_lock:
+            self._battery_levels[robot_name] = level
 
     # ----------------------------------------------------------------------
     # NAVIGATION
     # ----------------------------------------------------------------------
-    def _get_nav_client(self):
-        if self._global_nav_client is None:
-            self._global_nav_client = ActionClient(
-                self._node, NavigateToPose, "/navigate_to_pose"
-            )
-            self._node.get_logger().info("[RobotAPI] Using /navigate_to_pose")
-        return self._global_nav_client
+    def _get_nav_client(self, robot_name: str):
+        if robot_name not in self._nav_clients:
+            # Try specific namespace first
+            topic = f"/{robot_name}/navigate_to_pose"
+            # We don't strictly check if action server exists here,
+            # we lazily create the client. user can check ready state.
+
+            client = ActionClient(self._node, NavigateToPose, topic)
+            self._nav_clients[robot_name] = client
+            self._node.get_logger().info(f"[RobotAPI] Created client for {topic}")
+
+        return self._nav_clients[robot_name]
 
     def navigate(self, robot_name, cmd_id, pose, map_name, speed_limit=0.0):
         if robot_name not in self._goal_results:
             self._goal_results[robot_name] = {}
 
-        client = self._get_nav_client()
+        client = self._get_nav_client(robot_name)
         if not client.wait_for_server(5.0):
-            self._node.get_logger().error("Nav2 unavailable")
+            self._node.get_logger().error(f"Nav2 unavailable for {robot_name}")
             return False
 
         x, y, yaw = pose[:3]

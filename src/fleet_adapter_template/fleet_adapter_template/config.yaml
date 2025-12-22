@@ -1,8 +1,8 @@
 rmf_fleet:
   name: "my_robot_fleet"
   limits:
-    linear: [0.8, 0.1]      # vel, accel
-    angular: [0.4, 0.1]     # vel, accel
+    linear: [1.2, 0.2]      # vel, accel
+    angular: [0.8, 0.2]     # vel, accel
   profile:
     footprint: 0.3
     vicinity: 0.5
@@ -21,16 +21,16 @@ rmf_fleet:
   tool_system:
     power: 0.0
 
-  recharge_threshold: 0.10
-  recharge_soc: 1.0
+  recharge_threshold: 0.50
+  recharge_soc: 0.95
   publish_fleet_state: 1.0
-  account_for_battery_drain: false
+  account_for_battery_drain: true
 
   task_capabilities:
     loop: true
     delivery: true
     clean: false
-    finishing_request: "park"
+    finishing_request: "charge"
 
   fleet_manager:
     prefix: "ros2"
@@ -44,7 +44,7 @@ reference_coordinates:
     - [-0.04634631221209842, 0.03840620011662053, 0]
 
 robots:
-  robot1:
+  robot2:
     rmf_config:
       start:
         map_name: "L1"
@@ -57,17 +57,17 @@ robots:
     robot_config:
       max_delay: 5
 
-  # robot2:
-  #   rmf_config:
-  #     start:
-  #       map_name: "L1"
-  #       waypoint: "HomeRobot2"
-  #       orientation: 0.0
-  #     charger:
-  #       waypoint: "ChargeRobot2"
-  #     robot_state_update_frequency: 2
+  robot1:
+    rmf_config:
+      start:
+        map_name: "L1"
+        waypoint: "HomeRobot2"
+        orientation: 0.0
+      charger:
+        waypoint: "ChargeRobot2"
+      robot_state_update_frequency: 2
 
-  #   robot_config:
-  #     max_delay: 5
+    robot_config:
+      max_delay: 5
 
 
