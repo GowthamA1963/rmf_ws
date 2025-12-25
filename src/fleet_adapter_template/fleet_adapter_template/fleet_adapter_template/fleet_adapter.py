@@ -201,7 +201,11 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
     # ----------------------------------------------------------------------
     # NOTE: Our ROS-based RobotAPI can ignore these HTTP fields internally.
 
-    api = RobotAPI(node)
+    # Extract robot names from config
+    robot_names = list(config_yaml['robots'].keys())
+    node.get_logger().info(f"Initializing RobotAPI for robots: {robot_names}")
+
+    api = RobotAPI(node, robot_names)
 
     # ----------------------------------------------------------------------
     # Initialize robots directly from config (no HTTP discovery)
@@ -359,21 +363,11 @@ def main(argv=sys.argv):
         args.use_sim_time)
 
     # Create executor for the command handle node
-    executor = rclpy.executors.MultiThreadedExecutor()
+    rclpy_executor = rclpy.executors.SingleThreadedExecutor()
+    rclpy_executor.add_node(node)
 
-    # Add the same node used by RobotAPI and RobotCommandHandle
-    executor.add_node(node)
-
-    # Spin everything together
-    try:
-        executor.spin()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        executor.shutdown()
-        node.destroy_node()
-        rclpy.shutdown()
-
+    # Start the fleet adapter
+    rclpy_executor.spin()
 
     # Shutdown
     node.destroy_node()
