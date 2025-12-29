@@ -78,14 +78,14 @@ levels:
     - - 8.58
       - -4.25
       - {is_charger: true, name: ChargeRobot2}
-    - - 6.86
-      - -7.65
+    - - 6.93
+      - -8.02
       - {name: Home2}
-    - - 5.37
-      - -7.65
+    - - 5.24
+      - -7.91
       - {is_charger: true, name: ChargeRobot1}
-    - - 8.30
-      - -8.08
+    - - 8.48
+      - -8.25
       - {name: Home1}
     - - 17.57
       - -9.19
@@ -95,22 +95,22 @@ levels:
       - {name: L1}
     - - 19.85
       - -9.45
-      - {name: p2}
-    - - 19.58
-      - -11.89
+      - {is_passthrough_point: true, name: p2}
+    - - 19.42
+      - -12.88
       - {name: L2}
-    - - 31.46
-      - -10.87
-      - {name: p4}
-    - - 31.83
-      - -16.21
+    - - 31.90
+      - -10.93
+      - {is_passthrough_point: true, name: p4}
+    - - 31.74
+      - -16.67
       - {name: L4}
-    - - 33.00
-      - -7.00
+    - - 33.18
+      - -7.12
       - {name: L5}
     - - 25.86
       - -10.30
-      - {name: p3}
-    - - 25.47
-      - -12.55
+      - {is_passthrough_point: true, name: p3}
+    - - 25.50
+      - -12.95
       - {name: L3}
