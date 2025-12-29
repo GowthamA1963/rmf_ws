@@ -1,0 +1,211 @@
+[0.415s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.416s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x75afcb9a1000>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x75afcbaaa500>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x75afcbaaa500>>, mixin_verb=('build',))
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.313s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.313s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/robot1/rmf_ws'
+[1.313s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.313s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.314s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.345s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.345s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.345s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.346s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['ignore', 'ignore_ament_install']
+[1.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'ignore'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'ignore_ament_install'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['colcon_pkg']
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'colcon_pkg'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['colcon_meta']
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'colcon_meta'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['ros']
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'ros'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['cmake', 'python']
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'cmake'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'python'
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extensions ['python_setup_py']
+[1.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template) by extension 'python_setup_py'
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extensions ['ignore', 'ignore_ament_install']
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extension 'ignore'
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extension 'ignore_ament_install'
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extensions ['colcon_pkg']
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extension 'colcon_pkg'
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extensions ['colcon_meta']
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extension 'colcon_meta'
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extensions ['ros']
+[1.350s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/fleet_adapter_template) by extension 'ros'
+[1.356s] DEBUG:colcon.colcon_core.package_identification:Package 'src/fleet_adapter_template/fleet_adapter_template' with type 'ros.ament_python' and name 'fleet_adapter_template'
+[1.356s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['ignore', 'ignore_ament_install']
+[1.356s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'ignore'
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'ignore_ament_install'
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['colcon_pkg']
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'colcon_pkg'
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['colcon_meta']
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'colcon_meta'
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['ros']
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'ros'
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['cmake', 'python']
+[1.357s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'cmake'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'python'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extensions ['python_setup_py']
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/fleet_adapter_template/nav_graphs) by extension 'python_setup_py'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extensions ['ignore', 'ignore_ament_install']
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extension 'ignore'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extension 'ignore_ament_install'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extensions ['colcon_pkg']
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extension 'colcon_pkg'
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extensions ['colcon_meta']
+[1.358s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extension 'colcon_meta'
+[1.359s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extensions ['ros']
+[1.359s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_rmf_core) by extension 'ros'
+[1.361s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_rmf_core' with type 'ros.ament_python' and name 'my_rmf_core'
+[1.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/rmf-web) by extensions ['ignore', 'ignore_ament_install']
+[1.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/rmf-web) by extension 'ignore'
+[1.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/rmf-web) ignored
+[1.362s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.362s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.362s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.362s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.362s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.443s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.458s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/robot1/foodbot_ws/install
+[1.463s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/robot1/bot_ws/install
+[1.466s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/robot1/rmf_ws/install
+[1.472s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 457 installed packages in /opt/ros/humble
+[1.478s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.789s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_args' from command line to 'None'
+[1.789s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_target' from command line to 'None'
+[1.789s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_clean_cache' from command line to 'False'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_clean_first' from command line to 'False'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'cmake_force_configure' from command line to 'False'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'ament_cmake_args' from command line to 'None'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'catkin_cmake_args' from command line to 'None'
+[1.790s] Level 5:colcon.colcon_core.verb:set package 'fleet_adapter_template' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.790s] DEBUG:colcon.colcon_core.verb:Building package 'fleet_adapter_template' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot1/rmf_ws/build/fleet_adapter_template', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot1/rmf_ws/install/fleet_adapter_template', 'merge_install': False, 'path': '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template', 'symlink_install': False, 'test_result_base': None}
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_args' from command line to 'None'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_target' from command line to 'None'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_clean_cache' from command line to 'False'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_clean_first' from command line to 'False'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'cmake_force_configure' from command line to 'False'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'ament_cmake_args' from command line to 'None'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'catkin_cmake_args' from command line to 'None'
+[1.791s] Level 5:colcon.colcon_core.verb:set package 'my_rmf_core' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.791s] DEBUG:colcon.colcon_core.verb:Building package 'my_rmf_core' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot1/rmf_ws/build/my_rmf_core', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot1/rmf_ws/install/my_rmf_core', 'merge_install': False, 'path': '/home/robot1/rmf_ws/src/my_rmf_core', 'symlink_install': False, 'test_result_base': None}
+[1.792s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.794s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.795s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template' with build type 'ament_python'
+[1.795s] Level 1:colcon.colcon_core.shell:create_environment_hook('fleet_adapter_template', 'ament_prefix_path')
+[1.804s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.805s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/ament_prefix_path.ps1'
+[1.810s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/ament_prefix_path.dsv'
+[1.811s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/ament_prefix_path.sh'
+[1.814s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.814s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.827s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/robot1/rmf_ws/src/my_rmf_core' with build type 'ament_python'
+[1.828s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_rmf_core', 'ament_prefix_path')
+[1.830s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/ament_prefix_path.ps1'
+[1.831s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/ament_prefix_path.dsv'
+[1.834s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/ament_prefix_path.sh'
+[1.836s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.837s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.691s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template'
+[2.691s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.691s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.435s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/robot1/rmf_ws/src/my_rmf_core'
+[3.436s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.437s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.803s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot1/rmf_ws/src/my_rmf_core': PYTHONPATH=/home/robot1/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_rmf_core build --build-base /home/robot1/rmf_ws/build/my_rmf_core/build install --record /home/robot1/rmf_ws/build/my_rmf_core/install.log --single-version-externally-managed install_data
+[4.821s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/fleet_adapter_template build --build-base /home/robot1/rmf_ws/build/fleet_adapter_template/build install --record /home/robot1/rmf_ws/build/fleet_adapter_template/install.log --single-version-externally-managed install_data
+[5.820s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot1/rmf_ws/src/my_rmf_core' returned '0': PYTHONPATH=/home/robot1/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_rmf_core build --build-base /home/robot1/rmf_ws/build/my_rmf_core/build install --record /home/robot1/rmf_ws/build/my_rmf_core/install.log --single-version-externally-managed install_data
+[5.840s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core' for CMake module files
+[5.840s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core' for CMake config files
+[5.844s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core/lib'
+[5.844s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core/bin'
+[5.844s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core/lib/pkgconfig/my_rmf_core.pc'
+[5.846s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages'
+[5.846s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_rmf_core', 'pythonpath')
+[5.847s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/pythonpath.ps1'
+[5.848s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/pythonpath.dsv'
+[5.849s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/hook/pythonpath.sh'
+[5.850s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/my_rmf_core/bin'
+[5.850s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_rmf_core)
+[5.851s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/package.ps1'
+[5.853s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/package.dsv'
+[5.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/package.sh'
+[5.857s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/package.bash'
+[5.859s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/my_rmf_core/share/my_rmf_core/package.zsh'
+[5.861s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot1/rmf_ws/install/my_rmf_core/share/colcon-core/packages/my_rmf_core)
+[5.950s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template' for CMake module files
+[5.951s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template' returned '0': PYTHONPATH=/home/robot1/rmf_ws/build/fleet_adapter_template/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/fleet_adapter_template build --build-base /home/robot1/rmf_ws/build/fleet_adapter_template/build install --record /home/robot1/rmf_ws/build/fleet_adapter_template/install.log --single-version-externally-managed install_data
+[5.953s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template' for CMake config files
+[5.955s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template/lib'
+[5.955s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template/bin'
+[5.956s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template/lib/pkgconfig/fleet_adapter_template.pc'
+[5.957s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template/lib/python3.10/site-packages'
+[5.957s] Level 1:colcon.colcon_core.shell:create_environment_hook('fleet_adapter_template', 'pythonpath')
+[5.958s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath.ps1'
+[5.961s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath.dsv'
+[5.962s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/hook/pythonpath.sh'
+[5.966s] Level 1:colcon.colcon_core.environment:checking '/home/robot1/rmf_ws/install/fleet_adapter_template/bin'
+[5.967s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fleet_adapter_template)
+[5.968s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/package.ps1'
+[5.970s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/package.dsv'
+[5.971s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/package.sh'
+[5.971s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/package.bash'
+[5.972s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot1/rmf_ws/install/fleet_adapter_template/share/fleet_adapter_template/package.zsh'
+[5.972s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot1/rmf_ws/install/fleet_adapter_template/share/colcon-core/packages/fleet_adapter_template)
+[5.977s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.978s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.978s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.978s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[6.020s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[6.021s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[6.021s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[6.024s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[6.024s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[6.025s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot1/rmf_ws/install/local_setup.ps1'
+[6.035s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot1/rmf_ws/install/_local_setup_util_ps1.py'
+[6.044s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot1/rmf_ws/install/setup.ps1'
+[6.051s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot1/rmf_ws/install/local_setup.sh'
+[6.052s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot1/rmf_ws/install/_local_setup_util_sh.py'
+[6.054s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot1/rmf_ws/install/setup.sh'
+[6.058s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot1/rmf_ws/install/local_setup.bash'
+[6.060s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot1/rmf_ws/install/setup.bash'
+[6.064s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot1/rmf_ws/install/local_setup.zsh'
+[6.065s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot1/rmf_ws/install/setup.zsh'

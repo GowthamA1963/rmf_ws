@@ -38,7 +38,6 @@ import time
 from datetime import timedelta
 
 
-
 # States for RobotCommandHandle's state machine used when guiding robot along
 # a new path
 class RobotState(enum.IntEnum):

@@ -23,7 +23,7 @@ class RobotAPI:
     def __init__(self, node: Node, robot_names: list):
         """
         Initialize RobotAPI for multiple robots.
-
+        
         Args:
             node: ROS 2 node to use for subscriptions and action clients
             robot_names: List of robot names (e.g., ['robot1', 'robot2'])
@@ -51,12 +51,12 @@ class RobotAPI:
             history=HistoryPolicy.KEEP_LAST,
             depth=5
         )
-
+        
         # Subscribe to each robot's AMCL pose topic
         for robot_name in robot_names:
             self._poses[robot_name] = None
             self._logged_pose_once[robot_name] = False
-
+            
             topic = f'/{robot_name}/amcl_pose'
             self._node.create_subscription(
                 PoseWithCovarianceStamped,
@@ -80,7 +80,7 @@ class RobotAPI:
         """Callback for AMCL pose updates, stores pose per robot."""
         with self._pose_lock:
             self._poses[robot_name] = msg
-
+    
         if not self._logged_pose_once.get(robot_name, False):
             self._logged_pose_once[robot_name] = True
             self._node.get_logger().info(
@@ -101,7 +101,7 @@ class RobotAPI:
                     f"[RobotAPI] position() called for [{robot_name}] but amcl_pose not received yet"
                 )
                 return None
-
+            
             p = pose.pose.pose.position
             q = pose.pose.pose.orientation
 
@@ -130,7 +130,7 @@ class RobotAPI:
         """Get or create a Nav2 action client for the specified robot."""
         if robot_name not in self._nav_clients:
             topic = f'/{robot_name}/navigate_to_pose'
-
+            
             # QoS profile for Nav2 action client - reliable command delivery
             # RELIABLE: Ensure navigation commands are delivered
             # VOLATILE: Don't need historical goals, only current one
@@ -140,7 +140,7 @@ class RobotAPI:
                 history=HistoryPolicy.KEEP_LAST,
                 depth=10
             )
-
+            
             self._nav_clients[robot_name] = ActionClient(
                 self._node, NavigateToPose, topic, goal_service_qos_profile=nav_qos)
             self._goal_results[robot_name] = {}

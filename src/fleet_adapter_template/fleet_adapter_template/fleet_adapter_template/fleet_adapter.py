@@ -204,9 +204,9 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
     # Extract robot names from config
     robot_names = list(config_yaml['robots'].keys())
     node.get_logger().info(f"Initializing RobotAPI for robots: {robot_names}")
-
+    
     api = RobotAPI(node, robot_names)
-
+        
     # ----------------------------------------------------------------------
     # Initialize robots directly from config (no HTTP discovery)
     # ----------------------------------------------------------------------

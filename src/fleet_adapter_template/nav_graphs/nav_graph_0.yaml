@@ -4,68 +4,113 @@ levels:
     lanes:
     - - 0
       - 1
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 1
       - 0
-      - {speed_limit: 2.0}
-    - - 1
-      - 2
-      - {speed_limit: 2.0}
-    - - 2
-      - 1
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 2
       - 3
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 3
       - 2
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 1
-      - 4
-      - {speed_limit: 2.0}
-    - - 4
+      - 3
+      - {speed_limit: 0}
+    - - 3
       - 1
-      - {speed_limit: 2.0}
-    - - 0
+      - {speed_limit: 0}
+    - - 3
+      - 4
+      - {speed_limit: 0}
+    - - 4
+      - 3
+      - {speed_limit: 0}
+    - - 4
       - 5
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 5
-      - 0
-      - {speed_limit: 2.0}
-    - - 5
+      - 4
+      - {speed_limit: 0}
+    - - 4
       - 6
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 6
-      - 5
-      - {speed_limit: 2.0}
-    - - 0
+      - 4
+      - {speed_limit: 0}
+    - - 6
       - 7
-      - {speed_limit: 2.0}
+      - {speed_limit: 0}
     - - 7
-      - 0
-      - {speed_limit: 2.0}
+      - 6
+      - {speed_limit: 0}
+    - - 8
+      - 9
+      - {speed_limit: 0}
+    - - 9
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 10
+      - {speed_limit: 0}
+    - - 10
+      - 8
+      - {speed_limit: 0}
+    - - 6
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 6
+      - {speed_limit: 0}
+    - - 11
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 11
+      - {speed_limit: 0}
+    - - 12
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 12
+      - {speed_limit: 0}
     vertices:
-    - - 4.40
-      - -7.81
-      - {name: HomeRobot2,is_parking_spot: true}
-    - - 17.44
-      - -9.06
-      - {is_passthrough_point: true, name: p1}
-    - - 32.00
-      - -10.99
-      - {is_passthrough_point: true, name: p2}
-    - - 31.26
-      - -16.56
-      - {name: L2}
-    - - 16.96
-      - -13.40
-      - {name: L1}
-    - - 4.74
-      - -3.94
-      - {name: HomeRobot1, is_parking_spot: true}
-    - - 4.79
-      - -3.69
-      - {is_charger: true, name: ChargeRobot1}
-    - - 5.04
-      - -6.82
+    - - 8.58
+      - -4.25
       - {is_charger: true, name: ChargeRobot2}
+    - - 6.86
+      - -7.65
+      - {name: Home2}
+    - - 5.37
+      - -7.65
+      - {is_charger: true, name: ChargeRobot1}
+    - - 8.30
+      - -8.08
+      - {name: Home1}
+    - - 17.57
+      - -9.19
+      - {is_passthrough_point: true, name: p1}
+    - - 17.24
+      - -11.24
+      - {name: L1}
+    - - 19.85
+      - -9.45
+      - {name: p2}
+    - - 19.58
+      - -11.89
+      - {name: L2}
+    - - 31.46
+      - -10.87
+      - {name: p4}
+    - - 31.83
+      - -16.21
+      - {name: L4}
+    - - 33.00
+      - -7.00
+      - {name: L5}
+    - - 25.86
+      - -10.30
+      - {name: p3}
+    - - 25.47
+      - -12.55
+      - {name: L3}
