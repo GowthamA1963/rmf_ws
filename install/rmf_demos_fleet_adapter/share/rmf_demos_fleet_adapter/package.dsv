@@ -1,8 +1,0 @@
-source;ros_domain_id.txt
-source;share/rmf_demos_fleet_adapter/hook/pythonpath.ps1
-source;share/rmf_demos_fleet_adapter/hook/pythonpath.dsv
-source;share/rmf_demos_fleet_adapter/hook/pythonpath.sh
-source;ros_domain_id.txt
-source;share/rmf_demos_fleet_adapter/hook/ament_prefix_path.ps1
-source;share/rmf_demos_fleet_adapter/hook/ament_prefix_path.dsv
-source;share/rmf_demos_fleet_adapter/hook/ament_prefix_path.sh

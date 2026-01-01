@@ -1,2 +1,0 @@
-rmf_demos_fleet_adapter
-test
