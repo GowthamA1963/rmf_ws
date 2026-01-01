@@ -1,0 +1,2 @@
+[console_scripts]
+simple_api_server = rmf_demos_panel.simple_api_server:main

@@ -1,0 +1,124 @@
+[0.052s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_assets': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake /home/ros2/rmf_ws/src/rmf_demos/rmf_demos_assets -DCMAKE_INSTALL_PREFIX=/home/ros2/rmf_ws/install/rmf_demos_assets
+[0.605s] -- The C compiler identification is GNU 11.4.0
+[0.605s] -- The CXX compiler identification is GNU 11.4.0
+[0.605s] -- Detecting C compiler ABI info
+[0.605s] -- Detecting C compiler ABI info - done
+[0.605s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.606s] -- Detecting C compile features
+[0.606s] -- Detecting C compile features - done
+[0.606s] -- Detecting CXX compiler ABI info
+[0.733s] -- Detecting CXX compiler ABI info - done
+[0.752s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.752s] -- Detecting CXX compile features
+[0.753s] -- Detecting CXX compile features - done
+[0.769s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.932s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.583s] -- Configuring done
+[2.589s] -- Generating done
+[2.593s] -- Build files have been written to: /home/ros2/rmf_ws/build/rmf_demos_assets
+[2.814s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_assets' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake /home/ros2/rmf_ws/src/rmf_demos/rmf_demos_assets -DCMAKE_INSTALL_PREFIX=/home/ros2/rmf_ws/install/rmf_demos_assets
+[2.817s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_assets': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake --build /home/ros2/rmf_ws/build/rmf_demos_assets -- -j4 -l4
+[2.923s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_assets' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake --build /home/ros2/rmf_ws/build/rmf_demos_assets -- -j4 -l4
+[2.924s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_assets': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake --install /home/ros2/rmf_ws/build/rmf_demos_assets
+[2.944s] -- Install configuration: ""
+[2.945s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models
+[2.946s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE
+[2.946s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes
+[2.946s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE.obj
+[2.947s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE_Wheel.mtl
+[2.948s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE_Wheel.obj
+[2.949s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE_Diffuse.png
+[2.952s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE_Col.mtl
+[2.953s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE_Col.obj
+[2.954s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/meshes/CleanerBotE.mtl
+[2.954s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/model.sdf
+[2.955s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotE/model.config
+[2.955s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy
+[2.955s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/meshes
+[2.956s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/meshes/polaris.dae
+[2.960s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/model.sdf
+[2.961s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/model.config
+[2.962s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/model-1_4.sdf
+[2.962s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/model-1_3.sdf
+[2.964s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials
+[2.964s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/textures
+[2.964s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/textures/Ranger_Diffuse.png
+[2.970s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/textures/Ranger_Spec.png
+[2.976s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/textures/FNR_switch_R.png
+[2.977s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/textures/FNR_switch_F.png
+[2.977s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/scripts
+[2.978s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Caddy/materials/scripts/polaris.material
+[2.979s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot
+[2.979s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails
+[2.979s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails/3.png
+[2.979s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails/4.png
+[2.980s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails/5.png
+[2.981s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails/1.png
+[2.982s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/thumbnails/2.png
+[2.983s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes
+[2.983s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/HospitalRobot.obj
+[2.985s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/SmallWheel.mtl
+[2.986s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/SmallWheel.obj
+[2.986s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/FatWheel.obj
+[2.987s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/HospitalRobot.mtl
+[2.988s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/HospitalRobot_Diffuse.png
+[2.989s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/meshes/FatWheel.mtl
+[2.990s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/model.sdf
+[2.990s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/HospitalRobot/model.config
+[2.991s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportDispenser
+[2.991s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportDispenser/model.sdf
+[2.991s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportDispenser/model.config
+[2.992s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/RobotPlaceholder
+[2.992s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/RobotPlaceholder/model.sdf
+[2.992s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/RobotPlaceholder/model.config
+[2.993s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot
+[2.994s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes
+[2.994s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/body.obj
+[2.994s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/WheelMain.obj
+[2.995s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/WheelMain.mtl
+[2.995s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/DeliveryRobot_Diffuse.png
+[2.999s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/WheelSide.obj
+[3.000s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/WheelSide.mtl
+[3.001s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/meshes/body.mtl
+[3.001s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/model.sdf
+[3.002s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/DeliveryRobot/model.config
+[3.003s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot
+[3.003s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes
+[3.003s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/front_wheel.dae
+[3.005s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/tinyRobot_body.dae
+[3.008s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/sensors
+[3.008s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/sensors/raspi_camera.dae
+[3.009s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/sensors/sonar_hc-sr04.dae
+[3.011s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/meshes/caster_wheel.dae
+[3.013s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/model.sdf
+[3.014s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TinyRobot/model.config
+[3.015s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportIngestor
+[3.016s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportIngestor/model.sdf
+[3.016s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/TeleportIngestor/model.config
+[3.017s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA
+[3.018s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes
+[3.018s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA.mtl
+[3.018s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA_WheelBack.obj
+[3.019s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA.obj
+[3.021s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA_Diffuse.png
+[3.027s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA_WheelFront.obj
+[3.027s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA_WheelBack.mtl
+[3.028s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/meshes/CleanerBotA_WheelFront.mtl
+[3.029s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/model.sdf
+[3.030s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/CleanerBotA/model.config
+[3.031s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/ament_index/resource_index/package_run_dependencies/rmf_demos_assets
+[3.031s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/ament_index/resource_index/parent_prefix_path/rmf_demos_assets
+[3.035s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/environment/ament_prefix_path.sh
+[3.035s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/environment/ament_prefix_path.dsv
+[3.035s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/environment/path.sh
+[3.035s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/environment/path.dsv
+[3.036s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/local_setup.bash
+[3.036s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/local_setup.sh
+[3.036s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/local_setup.zsh
+[3.036s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/local_setup.dsv
+[3.036s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/package.dsv
+[3.038s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/ament_index/resource_index/packages/rmf_demos_assets
+[3.038s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/cmake/rmf_demos_assetsConfig.cmake
+[3.038s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/cmake/rmf_demos_assetsConfig-version.cmake
+[3.038s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/package.xml
+[3.044s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_assets' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=46 /usr/bin/cmake --install /home/ros2/rmf_ws/build/rmf_demos_assets

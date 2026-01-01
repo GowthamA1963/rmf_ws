@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    nav_graph_path = "/home/robot1/rmf_ws/src/my_rmf_core/maps/office_test.building.yaml"
+    nav_graph_path = "/home/ros2/rmf_ws/src/my_rmf_core/maps/office_test.building.yaml"
 
     return LaunchDescription([
 

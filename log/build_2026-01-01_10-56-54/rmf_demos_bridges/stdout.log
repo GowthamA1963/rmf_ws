@@ -1,0 +1,35 @@
+running egg_info
+creating ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info
+writing ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/PKG-INFO
+writing dependency_links to ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/dependency_links.txt
+writing entry points to ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/entry_points.txt
+writing requirements to ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/requires.txt
+writing top-level names to ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/top_level.txt
+writing manifest file '../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/SOURCES.txt'
+reading manifest file '../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/SOURCES.txt'
+writing manifest file '../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges
+copying rmf_demos_bridges/fleet_socketio_bridge.py -> /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges
+copying rmf_demos_bridges/__init__.py -> /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges
+copying rmf_demos_bridges/fleet_robotmanager_mqtt_bridge.py -> /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges
+running install
+running install_lib
+creating /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges
+copying /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges/fleet_socketio_bridge.py -> /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges
+copying /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges/__init__.py -> /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges
+copying /home/ros2/rmf_ws/build/rmf_demos_bridges/build/lib/rmf_demos_bridges/fleet_robotmanager_mqtt_bridge.py -> /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges/fleet_socketio_bridge.py to fleet_socketio_bridge.cpython-310.pyc
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges/fleet_robotmanager_mqtt_bridge.py to fleet_robotmanager_mqtt_bridge.cpython-310.pyc
+running install_data
+creating /home/ros2/rmf_ws/install/rmf_demos_bridges/share/ament_index/resource_index/packages
+copying resource/rmf_demos_bridges -> /home/ros2/rmf_ws/install/rmf_demos_bridges/share/ament_index/resource_index/packages
+copying package.xml -> /home/ros2/rmf_ws/install/rmf_demos_bridges/share/rmf_demos_bridges
+running install_egg_info
+Copying ../../../build/rmf_demos_bridges/rmf_demos_bridges.egg-info to /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/python3.10/site-packages/rmf_demos_bridges-2.0.3-py3.10.egg-info
+running install_scripts
+Installing fleet_robotmanager_mqtt_bridge script to /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/rmf_demos_bridges
+Installing fleet_socketio_bridge script to /home/ros2/rmf_ws/install/rmf_demos_bridges/lib/rmf_demos_bridges
+writing list of installed files to '/home/ros2/rmf_ws/build/rmf_demos_bridges/install.log'

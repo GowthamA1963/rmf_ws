@@ -1,0 +1,41 @@
+/home/ros2/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+creating ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info
+writing ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/PKG-INFO
+writing dependency_links to ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/dependency_links.txt
+writing entry points to ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/entry_points.txt
+writing requirements to ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/requires.txt
+writing top-level names to ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/top_level.txt
+writing manifest file '../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/SOURCES.txt'
+reading manifest file '../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/SOURCES.txt'
+writing manifest file '../../../build/rmf_demos_panel/rmf_demos_panel.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel
+copying rmf_demos_panel/simple_api_server.py -> /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel
+copying rmf_demos_panel/rmf_msg_observer.py -> /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel
+copying rmf_demos_panel/dispatcher_client.py -> /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel
+copying rmf_demos_panel/__init__.py -> /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel
+running install
+running install_lib
+creating /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel
+copying /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel/simple_api_server.py -> /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel
+copying /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel/rmf_msg_observer.py -> /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel
+copying /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel/dispatcher_client.py -> /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel
+copying /home/ros2/rmf_ws/build/rmf_demos_panel/build/lib/rmf_demos_panel/__init__.py -> /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/simple_api_server.py to simple_api_server.cpython-310.pyc
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/rmf_msg_observer.py to rmf_msg_observer.cpython-310.pyc
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/dispatcher_client.py to dispatcher_client.cpython-310.pyc
+byte-compiling /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/ros2/rmf_ws/install/rmf_demos_panel/share/ament_index/resource_index/packages
+copying resource/rmf_demos_panel -> /home/ros2/rmf_ws/install/rmf_demos_panel/share/ament_index/resource_index/packages
+copying package.xml -> /home/ros2/rmf_ws/install/rmf_demos_panel/share/rmf_demos_panel
+creating /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/templates
+creating /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel/static/dist
+running install_egg_info
+Copying ../../../build/rmf_demos_panel/rmf_demos_panel.egg-info to /home/ros2/rmf_ws/install/rmf_demos_panel/lib/python3.10/site-packages/rmf_demos_panel-2.0.3-py3.10.egg-info
+running install_scripts
+Installing simple_api_server script to /home/ros2/rmf_ws/install/rmf_demos_panel/lib/rmf_demos_panel
+writing list of installed files to '/home/ros2/rmf_ws/build/rmf_demos_panel/install.log'

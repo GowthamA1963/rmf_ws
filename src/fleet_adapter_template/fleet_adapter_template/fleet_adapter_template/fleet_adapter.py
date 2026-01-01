@@ -138,6 +138,7 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
     # Task acceptance
     # ----------------------------------------------------------------------
     # Accept ALL tasks (loop, delivery, patrol, clean, etc.) while debugging.
+    # Accept ALL tasks (loop, delivery, patrol, clean, etc.) while debugging.
     def _task_request_check(msg: TaskProfile):
         node.get_logger().info(
             f"Fleet [{fleet_name}] received task request "
@@ -145,6 +146,8 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
         )
         return True
 
+    # Keep callback alive
+    adapter.task_request_check = _task_request_check
     fleet_handle.accept_task_requests(_task_request_check)
 
     # ----------------------------------------------------------------------
@@ -155,6 +158,8 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
         confirm.accept()
         return confirm
 
+    # Keep callback alive
+    adapter.consider_teleop = _consider
     # Configure this fleet to perform any kind of teleop action
     fleet_handle.add_performable_action("teleop", _consider)
 
@@ -361,6 +366,14 @@ def main(argv=sys.argv):
         nav_graph_path,
         node,
         args.use_sim_time)
+
+    # NOTE: In initialize_fleet, we now return (adapter, fleet_handle) to keep
+    # the python object alive. But if we only need adapter to spin, we can just
+    # unpack it or modify initialize_fleet slightly.
+    # To minimize diffs and ensure safety, let's just make the callbacks persistent
+    # INSIDE initialize_fleet by attaching them to the adapter or node.
+
+    # Wait, I will modify initialize_fleet to attach callbacks to adapter.
 
     # Create executor for the command handle node
     rclpy_executor = rclpy.executors.SingleThreadedExecutor()

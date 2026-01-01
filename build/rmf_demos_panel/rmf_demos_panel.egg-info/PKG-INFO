@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: rmf_demos_panel
+Version: 2.0.3
+Summary: RMF demo web based panel
+Maintainer: youliang
+Maintainer-email: youliang@openrobotics.org
+License: Apache License 2.0
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

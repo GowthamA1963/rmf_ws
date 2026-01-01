@@ -1,0 +1,32 @@
+[2.931s] Invoking command in '/home/ros2/rmf_ws/src/my_rmf_core': PYTHONPATH=/home/ros2/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=4 /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_rmf_core build --build-base /home/ros2/rmf_ws/build/my_rmf_core/build install --record /home/ros2/rmf_ws/build/my_rmf_core/install.log --single-version-externally-managed install_data
+[3.379s] /home/ros2/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[3.380s]   warnings.warn(msg)
+[3.955s] running egg_info
+[4.061s] creating ../../build/my_rmf_core/my_rmf_core.egg-info
+[4.061s] writing ../../build/my_rmf_core/my_rmf_core.egg-info/PKG-INFO
+[4.068s] writing dependency_links to ../../build/my_rmf_core/my_rmf_core.egg-info/dependency_links.txt
+[4.069s] writing requirements to ../../build/my_rmf_core/my_rmf_core.egg-info/requires.txt
+[4.069s] writing top-level names to ../../build/my_rmf_core/my_rmf_core.egg-info/top_level.txt
+[4.069s] writing manifest file '../../build/my_rmf_core/my_rmf_core.egg-info/SOURCES.txt'
+[4.170s] reading manifest file '../../build/my_rmf_core/my_rmf_core.egg-info/SOURCES.txt'
+[4.171s] writing manifest file '../../build/my_rmf_core/my_rmf_core.egg-info/SOURCES.txt'
+[4.171s] running build
+[4.172s] running build_py
+[4.172s] creating /home/ros2/rmf_ws/build/my_rmf_core/build/lib/my_rmf_core
+[4.175s] copying my_rmf_core/__init__.py -> /home/ros2/rmf_ws/build/my_rmf_core/build/lib/my_rmf_core
+[4.175s] running install
+[4.187s] running install_lib
+[4.241s] creating /home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages/my_rmf_core
+[4.241s] copying /home/ros2/rmf_ws/build/my_rmf_core/build/lib/my_rmf_core/__init__.py -> /home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages/my_rmf_core
+[4.244s] byte-compiling /home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages/my_rmf_core/__init__.py to __init__.cpython-310.pyc
+[4.244s] running install_data
+[4.245s] creating /home/ros2/rmf_ws/install/my_rmf_core/share/ament_index/resource_index/packages
+[4.246s] copying resource/my_rmf_core -> /home/ros2/rmf_ws/install/my_rmf_core/share/ament_index/resource_index/packages
+[4.247s] copying package.xml -> /home/ros2/rmf_ws/install/my_rmf_core/share/my_rmf_core
+[4.247s] creating /home/ros2/rmf_ws/install/my_rmf_core/share/my_rmf_core/launch
+[4.249s] copying launch/rmf_core.launch.py -> /home/ros2/rmf_ws/install/my_rmf_core/share/my_rmf_core/launch
+[4.249s] running install_egg_info
+[4.354s] Copying ../../build/my_rmf_core/my_rmf_core.egg-info to /home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages/my_rmf_core-0.0.0-py3.10.egg-info
+[4.362s] running install_scripts
+[4.530s] writing list of installed files to '/home/ros2/rmf_ws/build/my_rmf_core/install.log'
+[4.588s] Invoked command in '/home/ros2/rmf_ws/src/my_rmf_core' returned '0': PYTHONPATH=/home/ros2/rmf_ws/build/my_rmf_core/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ros2/rmf_ws/install/my_rmf_core/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=4 /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_rmf_core build --build-base /home/ros2/rmf_ws/build/my_rmf_core/build install --record /home/ros2/rmf_ws/build/my_rmf_core/install.log --single-version-externally-managed install_data

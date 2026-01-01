@@ -1,0 +1,187 @@
+building_name: hotel
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 0
+      - {speed_limit: 0}
+    - - 2
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 2
+      - {speed_limit: 0}
+    - - 3
+      - 4
+      - {door_name: L1_door2, speed_limit: 0}
+    - - 4
+      - 3
+      - {door_name: L1_door2, speed_limit: 0}
+    - - 4
+      - 5
+      - {speed_limit: 0}
+    - - 5
+      - 4
+      - {speed_limit: 0}
+    - - 5
+      - 6
+      - {dock_name: clean_restaurant, speed_limit: 0}
+    - - 6
+      - 5
+      - {speed_limit: 0, undock_name: clean_restaurant}
+    - - 7
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 7
+      - {speed_limit: 0}
+    - - 7
+      - 8
+      - {dock_name: clean_lobby, speed_limit: 0}
+    - - 8
+      - 7
+      - {speed_limit: 0, undock_name: clean_lobby}
+    - - 9
+      - 0
+      - {door_name: L1_door5, speed_limit: 0}
+    - - 0
+      - 9
+      - {door_name: L1_door5, speed_limit: 0}
+    - - 0
+      - 10
+      - {door_name: L1_door5, speed_limit: 0}
+    - - 10
+      - 0
+      - {door_name: L1_door5, speed_limit: 0}
+    - - 1
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 1
+      - {speed_limit: 0}
+    - - 11
+      - 12
+      - {speed_limit: 0}
+    - - 12
+      - 11
+      - {speed_limit: 0}
+    - - 4
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 4
+      - {speed_limit: 0}
+    - - 14
+      - 2
+      - {speed_limit: 0}
+    - - 2
+      - 14
+      - {speed_limit: 0}
+    - - 14
+      - 15
+      - {speed_limit: 0}
+    - - 15
+      - 14
+      - {speed_limit: 0}
+    - - 14
+      - 16
+      - {speed_limit: 0}
+    - - 16
+      - 14
+      - {speed_limit: 0}
+    - - 16
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 16
+      - {speed_limit: 0}
+    - - 5
+      - 17
+      - {speed_limit: 0}
+    - - 17
+      - 5
+      - {speed_limit: 0}
+    - - 2
+      - 18
+      - {speed_limit: 0}
+    - - 18
+      - 2
+      - {speed_limit: 0}
+    - - 18
+      - 19
+      - {dock_name: clean_waiting_area, speed_limit: 0}
+    - - 19
+      - 18
+      - {speed_limit: 0, undock_name: clean_waiting_area}
+    vertices:
+    - - 28.16955590793465
+      - -32.30948957465618
+      - {name: ''}
+    - - 25.039382530727792
+      - -32.532600105678256
+      - {name: ''}
+    - - 12.081154069873543
+      - -24.868778421156637
+      - {name: ''}
+    - - 11.467725389995785
+      - -21.78732521231621
+      - {name: ''}
+    - - 11.422680114328987
+      - -17.87573601470412
+      - {name: ''}
+    - - 14.196166178901107
+      - -11.354583239000814
+      - {name: ''}
+    - - 12.86011996181235
+      - -11.385652786370494
+      - {dock_name: clean_restaurant, is_cleaning_zone: true, name: clean_restaurant}
+    - - 24.588372972135634
+      - -35.48498662849193
+      - {name: ''}
+    - - 23.841478871030045
+      - -35.497570351978574
+      - {dock_name: clean_lobby, is_cleaning_zone: true, name: clean_lobby}
+    - - 26.364960871641816
+      - -27.752566946910367
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: cleanerbot_charger1,
+        spawn_robot_name: cleanerBotA_1, spawn_robot_type: CleanerBotA}
+    - - 29.239395125069194
+      - -27.6631445578858
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: cleanerbot_charger2,
+        spawn_robot_name: cleanerBotA_2, spawn_robot_type: CleanerBotA}
+    - - 20.38156739431914
+      - -32.86456541287906
+      - {name: ''}
+    - - 20.4602991863993
+      - -35.35419385650021
+      - {is_holding_point: true, name: ''}
+    - - 14.115040138546936
+      - -17.846225512722164
+      - {is_holding_point: true, name: ''}
+    - - 13.063464024525755
+      - -29.803435474271488
+      - {name: ''}
+    - - 11.052685235706157
+      - -30.532511913803067
+      - {is_holding_point: true, name: ''}
+    - - 13.766649174582597
+      - -33.336009602088915
+      - {name: ''}
+    - - 15.773753070702552
+      - -11.354583239000814
+      - {is_holding_point: true, name: ''}
+    - - 8.574972353262625
+      - -21.930144905870396
+      - {name: ''}
+    - - 8.561330706120023
+      - -23.26858537123316
+      - {dock_name: clean_waiting_area, is_cleaning_zone: true, name: clean_waiting_area}
+  L2:
+    lanes: []
+    vertices: []
+  L3:
+    lanes: []
+    vertices: []

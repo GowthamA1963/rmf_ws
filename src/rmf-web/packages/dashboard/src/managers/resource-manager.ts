@@ -25,17 +25,7 @@ export default class ResourceManager {
    * Gets the default resource manager using the embedded resource file (aka "assets/resources/main.json").
    */
   static defaultResourceManager = async (): Promise<ResourceManager | undefined> => {
-    try {
-      // need to use interpolate string to make webpack resolve import at run time and for
-      // typescript to not attempt to typecheck it.
-      const resources = (await import(
-        /* webpackMode: "eager" */ `../assets/${ResourceFile}`
-      )) as ResourceConfigurationsType;
-      return new ResourceManager(resources);
-    } catch {
-      debug('failed to load resource file');
-      return new ResourceManager({});
-    }
+    return new ResourceManager({});
   };
 
   constructor(resources: ResourceConfigurationsType) {

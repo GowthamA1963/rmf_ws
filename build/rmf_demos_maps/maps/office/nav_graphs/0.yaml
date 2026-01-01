@@ -1,0 +1,276 @@
+building_name: building
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 0
+      - {speed_limit: 0}
+    - - 2
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 2
+      - {speed_limit: 0}
+    - - 2
+      - 4
+      - {speed_limit: 0}
+    - - 4
+      - 2
+      - {speed_limit: 0}
+    - - 5
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 5
+      - {speed_limit: 0}
+    - - 1
+      - 6
+      - {speed_limit: 0}
+    - - 6
+      - 1
+      - {speed_limit: 0}
+    - - 6
+      - 7
+      - {speed_limit: 0}
+    - - 7
+      - 6
+      - {speed_limit: 0}
+    - - 6
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 6
+      - {speed_limit: 0}
+    - - 9
+      - 10
+      - {speed_limit: 0}
+    - - 10
+      - 9
+      - {speed_limit: 0}
+    - - 8
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 8
+      - {speed_limit: 0}
+    - - 11
+      - 12
+      - {speed_limit: 0}
+    - - 12
+      - 11
+      - {speed_limit: 0}
+    - - 0
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 0
+      - {speed_limit: 0}
+    - - 14
+      - 5
+      - {speed_limit: 0}
+    - - 5
+      - 14
+      - {speed_limit: 0}
+    - - 14
+      - 15
+      - {speed_limit: 0}
+    - - 15
+      - 14
+      - {speed_limit: 0}
+    - - 7
+      - 16
+      - {speed_limit: 0}
+    - - 16
+      - 7
+      - {speed_limit: 0}
+    - - 7
+      - 17
+      - {speed_limit: 0}
+    - - 17
+      - 7
+      - {speed_limit: 0}
+    - - 17
+      - 18
+      - {speed_limit: 0}
+    - - 18
+      - 17
+      - {speed_limit: 0}
+    - - 18
+      - 2
+      - {speed_limit: 0}
+    - - 2
+      - 18
+      - {speed_limit: 0}
+    - - 19
+      - 20
+      - {speed_limit: 0}
+    - - 20
+      - 19
+      - {speed_limit: 0}
+    - - 21
+      - 22
+      - {speed_limit: 0}
+    - - 22
+      - 21
+      - {speed_limit: 0}
+    - - 6
+      - 23
+      - {door_name: coe_door, speed_limit: 0}
+    - - 23
+      - 6
+      - {door_name: coe_door, speed_limit: 0}
+    - - 23
+      - 24
+      - {speed_limit: 0}
+    - - 24
+      - 23
+      - {speed_limit: 0}
+    - - 3
+      - 10
+      - {speed_limit: 0}
+    - - 10
+      - 3
+      - {speed_limit: 0}
+    - - 9
+      - 25
+      - {speed_limit: 0}
+    - - 25
+      - 9
+      - {speed_limit: 0}
+    - - 10
+      - 26
+      - {door_name: hardware_door, speed_limit: 0}
+    - - 26
+      - 10
+      - {door_name: hardware_door, speed_limit: 0}
+    - - 26
+      - 27
+      - {speed_limit: 0}
+    - - 27
+      - 26
+      - {speed_limit: 0}
+    - - 12
+      - 19
+      - {speed_limit: 0}
+    - - 19
+      - 12
+      - {speed_limit: 0}
+    - - 19
+      - 21
+      - {speed_limit: 0}
+    - - 21
+      - 19
+      - {speed_limit: 0}
+    - - 21
+      - 25
+      - {speed_limit: 0}
+    - - 25
+      - 21
+      - {speed_limit: 0}
+    - - 14
+      - 28
+      - {speed_limit: 0}
+    - - 28
+      - 14
+      - {speed_limit: 0}
+    - - 14
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 14
+      - {speed_limit: 0}
+    vertices:
+    - - 6.897922288138119
+      - -2.0253696576910034
+      - {is_parking_spot: false, name: ''}
+    - - 10.247854072726847
+      - -3.09205587858002
+      - {name: patrol_D2}
+    - - 16.85582469463477
+      - -6.881363780090288
+      - {name: patrol_D1}
+    - - 18.7395242949738
+      - -6.873981868527042
+      - {is_parking_spot: false, name: ''}
+    - - 16.84633487483844
+      - -5.404067193990636
+      - {is_holding_point: true, is_parking_spot: false, name: pantry, pickup_dispenser: coke_dispenser}
+    - - 13.130566727628535
+      - -3.964806076530507
+      - {name: ''}
+    - - 8.91185506220304
+      - -6.181352005818735
+      - {name: ''}
+    - - 10.086146188918223
+      - -6.979436538645566
+      - {name: patrol_A1}
+    - - 7.914645158056635
+      - -7.918869440017712
+      - {is_parking_spot: false, name: ''}
+    - - 18.813842874806067
+      - -11.078979432195132
+      - {name: patrol_C}
+    - - 18.794423029477986
+      - -10.372406899366796
+      - {name: ''}
+    - - 7.988303429285765
+      - -10.780257513236124
+      - {name: patrol_B}
+    - - 9.376500681436838
+      - -11.142885453285663
+      - {name: ''}
+    - - 6.264034494624035
+      - -3.515686174965279
+      - {is_parking_spot: true, name: supplies}
+    - - 18.729018615788036
+      - -3.895981602896117
+      - {name: patrol_A2}
+    - - 19.89569926257735
+      - -3.407150064698795
+      - {is_holding_point: true, is_parking_spot: false, name: lounge}
+    - - 10.433053704916215
+      - -5.5750955876973505
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: tinyRobot1_charger,
+        spawn_robot_name: tinyRobot1, spawn_robot_type: TinyRobot}
+    - - 11.565889303047436
+      - -6.996807734204947
+      - {name: ''}
+    - - 15.298605371071123
+      - -6.928838275556667
+      - {name: ''}
+    - - 11.553368836072618
+      - -11.315970962255989
+      - {name: ''}
+    - - 11.556323293796899
+      - -9.484427276069658
+      - {name: ''}
+    - - 15.157189278566513
+      - -11.22709173117512
+      - {name: ''}
+    - - 15.162488678381411
+      - -9.403514075700963
+      - {name: ''}
+    - - 6.517305171400626
+      - -5.232928748850067
+      - {name: ''}
+    - - 5.346484897599354
+      - -4.976813665783051
+      - {dropoff_ingestor: coke_ingestor_2, is_holding_point: true, is_parking_spot: false,
+        name: coe}
+    - - 17.067495929413894
+      - -11.09788288233358
+      - {name: ''}
+    - - 20.89365413027601
+      - -10.308373895852586
+      - {name: ''}
+    - - 20.948248106963362
+      - -7.497347051865536
+      - {dropoff_ingestor: coke_ingestor, is_holding_point: true, is_parking_spot: false,
+        name: hardware_2}
+    - - 20.423692180237488
+      - -5.312098057266895
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: tinyRobot2_charger,
+        spawn_robot_name: tinyRobot2, spawn_robot_type: TinyRobot}

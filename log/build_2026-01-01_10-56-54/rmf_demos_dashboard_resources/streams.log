@@ -1,0 +1,59 @@
+[0.058s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake /home/ros2/rmf_ws/src/rmf_demos/rmf_demos_dashboard_resources -DCMAKE_INSTALL_PREFIX=/home/ros2/rmf_ws/install/rmf_demos_dashboard_resources
+[0.621s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.142s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.808s] -- Configuring done
+[1.828s] -- Generating done
+[1.833s] -- Build files have been written to: /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources
+[1.849s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake /home/ros2/rmf_ws/src/rmf_demos/rmf_demos_dashboard_resources -DCMAKE_INSTALL_PREFIX=/home/ros2/rmf_ws/install/rmf_demos_dashboard_resources
+[1.858s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake --build /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources -- -j4 -l4
+[2.100s] [100%] Built target build
+[2.132s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake --build /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources -- -j4 -l4
+[2.157s] Invoking command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake --install /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources
+[2.183s] -- Install configuration: ""
+[2.184s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/package_run_dependencies/rmf_demos_dashboard_resources
+[2.185s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/parent_prefix_path/rmf_demos_dashboard_resources
+[2.186s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/ament_prefix_path.sh
+[2.187s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/ament_prefix_path.dsv
+[2.187s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/path.sh
+[2.188s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/path.dsv
+[2.189s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.bash
+[2.189s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.sh
+[2.190s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.zsh
+[2.191s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.dsv
+[2.191s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/package.dsv
+[2.192s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/packages/rmf_demos_dashboard_resources
+[2.193s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/cmake/rmf_demos_dashboard_resourcesConfig.cmake
+[2.194s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/cmake/rmf_demos_dashboard_resourcesConfig-version.cmake
+[2.195s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/package.xml
+[2.195s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal
+[2.195s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons
+[2.195s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/cleanerBotA.png
+[2.196s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/caddy.png
+[2.199s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/deliveryRobot.png
+[2.200s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/tinyRobot.png
+[2.200s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/cleanerBotE.png
+[2.202s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/headerLogo.png
+[2.203s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/main.json
+[2.204s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/dashboard_config.json
+[2.205s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office
+[2.205s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons
+[2.205s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/fridge.png
+[2.206s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/roshealth-logo-blue.png
+[2.206s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/deliveryRobot.png
+[2.207s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/humanIcon.png
+[2.208s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/tinyRobot.png
+[2.210s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/headerLogo.png
+[2.211s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/main.json
+[2.212s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/dashboard_config.json
+[2.213s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel
+[2.213s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons
+[2.214s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/cleanerBotA.png
+[2.215s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/deliveryRobot.png
+[2.216s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/tinyRobot.png
+[2.217s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/headerLogo.png
+[2.218s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/main.json
+[2.219s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/dashboard_config.json
+[2.219s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic
+[2.220s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic/main.json
+[2.220s] -- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic/dashboard_config.json
+[2.230s] Invoked command in '/home/ros2/rmf_ws/build/rmf_demos_dashboard_resources' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ros2/rmf_ws/install/rmf_demos_tasks:/home/ros2/rmf_ws/install/rmf_demos_panel:/home/ros2/rmf_ws/install/rmf_demos_fleet_adapter:/home/ros2/rmf_ws/install/rmf_demos_bridges:/home/ros2/rmf_ws/install/my_rmf_core:/home/ros2/rmf_ws/install/fleet_adapter_template:/home/ros2/microros_ws/install/sensor_msgs_py:/opt/ros/humble ROS_DOMAIN_ID=8 /usr/bin/cmake --install /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources

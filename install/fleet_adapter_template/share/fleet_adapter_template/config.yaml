@@ -36,6 +36,8 @@ rmf_fleet:
     prefix: "ros2"
     user: ""
     password: ""
+    ip: "127.0.0.1"
+    port: 8002
 
 reference_coordinates:
   rmf:
@@ -70,6 +72,6 @@ robots:
     robot_config:
       max_delay: 5
 
-  
+
 
 

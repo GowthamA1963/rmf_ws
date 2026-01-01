@@ -1,0 +1,700 @@
+building_name: clinic
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 0
+      - {speed_limit: 0}
+    - - 2
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 2
+      - {speed_limit: 0}
+    - - 3
+      - 4
+      - {speed_limit: 0}
+    - - 4
+      - 3
+      - {speed_limit: 0}
+    - - 4
+      - 5
+      - {door_name: L1_left_inner, speed_limit: 0}
+    - - 5
+      - 4
+      - {door_name: L1_left_inner, speed_limit: 0}
+    - - 5
+      - 6
+      - {speed_limit: 0}
+    - - 6
+      - 5
+      - {speed_limit: 0}
+    - - 2
+      - 7
+      - {speed_limit: 0}
+    - - 7
+      - 2
+      - {speed_limit: 0}
+    - - 7
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 7
+      - {speed_limit: 0}
+    - - 8
+      - 9
+      - {speed_limit: 0}
+    - - 9
+      - 8
+      - {speed_limit: 0}
+    - - 10
+      - 11
+      - {door_name: L1_clinic_a, speed_limit: 0}
+    - - 11
+      - 10
+      - {door_name: L1_clinic_a, speed_limit: 0}
+    - - 9
+      - 12
+      - {speed_limit: 0}
+    - - 12
+      - 9
+      - {speed_limit: 0}
+    - - 12
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 12
+      - {speed_limit: 0}
+    - - 13
+      - 10
+      - {speed_limit: 0}
+    - - 10
+      - 13
+      - {speed_limit: 0}
+    - - 14
+      - 15
+      - {speed_limit: 0}
+    - - 15
+      - 14
+      - {speed_limit: 0}
+    - - 11
+      - 16
+      - {speed_limit: 0}
+    - - 16
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 17
+      - {speed_limit: 0}
+    - - 17
+      - 11
+      - {speed_limit: 0}
+    - - 17
+      - 15
+      - {speed_limit: 0}
+    - - 15
+      - 17
+      - {speed_limit: 0}
+    - - 16
+      - 18
+      - {door_name: L1_clinic_b, speed_limit: 0}
+    - - 18
+      - 16
+      - {door_name: L1_clinic_b, speed_limit: 0}
+    - - 18
+      - 19
+      - {speed_limit: 0}
+    - - 19
+      - 18
+      - {speed_limit: 0}
+    - - 19
+      - 20
+      - {speed_limit: 0}
+    - - 20
+      - 19
+      - {speed_limit: 0}
+    - - 20
+      - 21
+      - {speed_limit: 0}
+    - - 21
+      - 20
+      - {speed_limit: 0}
+    - - 21
+      - 22
+      - {speed_limit: 0}
+    - - 22
+      - 21
+      - {speed_limit: 0}
+    - - 22
+      - 23
+      - {speed_limit: 0}
+    - - 23
+      - 22
+      - {speed_limit: 0}
+    - - 23
+      - 24
+      - {speed_limit: 0}
+    - - 24
+      - 23
+      - {speed_limit: 0}
+    - - 24
+      - 25
+      - {speed_limit: 0}
+    - - 25
+      - 24
+      - {speed_limit: 0}
+    - - 25
+      - 26
+      - {speed_limit: 0}
+    - - 26
+      - 25
+      - {speed_limit: 0}
+    - - 26
+      - 27
+      - {speed_limit: 0}
+    - - 27
+      - 26
+      - {speed_limit: 0}
+    - - 27
+      - 28
+      - {speed_limit: 0}
+    - - 28
+      - 27
+      - {speed_limit: 0}
+    - - 28
+      - 29
+      - {speed_limit: 0}
+    - - 29
+      - 28
+      - {speed_limit: 0}
+    - - 27
+      - 30
+      - {speed_limit: 0}
+    - - 30
+      - 27
+      - {speed_limit: 0}
+    - - 30
+      - 31
+      - {door_name: L1_right_inner, speed_limit: 0}
+    - - 31
+      - 30
+      - {door_name: L1_right_inner, speed_limit: 0}
+    - - 30
+      - 32
+      - {speed_limit: 0}
+    - - 32
+      - 30
+      - {speed_limit: 0}
+    - - 32
+      - 33
+      - {speed_limit: 0}
+    - - 33
+      - 32
+      - {speed_limit: 0}
+    - - 4
+      - 0
+      - {speed_limit: 0}
+    - - 0
+      - 4
+      - {speed_limit: 0}
+    - - 0
+      - 34
+      - {speed_limit: 0}
+    - - 34
+      - 0
+      - {speed_limit: 0}
+    - - 34
+      - 32
+      - {speed_limit: 0}
+    - - 32
+      - 34
+      - {speed_limit: 0}
+    - - 31
+      - 35
+      - {speed_limit: 0}
+    - - 35
+      - 31
+      - {speed_limit: 0}
+    vertices:
+    - - 30.94642898350066
+      - -11.543929079650793
+      - {name: ''}
+    - - 30.97243567555097
+      - -13.938483135264041
+      - {is_holding_point: true, is_parking_spot: true, name: L1_sub_waiting_area_4}
+    - - 13.23896773201032
+      - -13.514084073689485
+      - {name: ''}
+    - - 15.541017653167199
+      - -11.628302757586257
+      - {name: ''}
+    - - 21.45557478558519
+      - -11.595915541709944
+      - {name: ''}
+    - - 21.481877620091552
+      - -14.803111418791598
+      - {name: ''}
+    - - 21.523795238644688
+      - -19.625899003884484
+      - {is_holding_point: true, is_parking_spot: true, name: L1_left_nurse_center}
+    - - 13.20978423906774
+      - -26.765220568439698
+      - {name: ''}
+    - - 13.312114918656986
+      - -31.724933656397862
+      - {name: ''}
+    - - 13.460078458520837
+      - -33.78479289258109
+      - {name: ''}
+    - - 16.891104188300464
+      - -40.321760701511515
+      - {name: ''}
+    - - 16.90329987308182
+      - -43.10444982885278
+      - {name: ''}
+    - - 15.043606015153276
+      - -36.801811468789694
+      - {name: ''}
+    - - 15.710384215991708
+      - -38.07220876120152
+      - {name: ''}
+    - - 7.5381716087842845
+      - -43.694473289488904
+      - {is_passthrough_point: true, lift: lift_25, lift_cabin: lift_25, name: ''}
+    - - 9.610199607707404
+      - -41.47370101149959
+      - {name: ''}
+    - - 35.31684550594211
+      - -43.3514326372063
+      - {name: ''}
+    - - 11.193081035344804
+      - -43.04015999384642
+      - {name: ''}
+    - - 39.04589823468332
+      - -43.3393984846737
+      - {name: ''}
+    - - 40.185319795392516
+      - -42.639075420176184
+      - {name: ''}
+    - - 41.94012537979312
+      - -41.560524595207916
+      - {name: ''}
+    - - 49.07858543902162
+      - -37.173012576439405
+      - {name: ''}
+    - - 49.04681743009888
+      - -34.49017730087308
+      - {name: ''}
+    - - 49.014618668512796
+      - -31.076516287835112
+      - {name: ''}
+    - - 48.87314334064079
+      - -19.82864889811932
+      - {name: ''}
+    - - 48.80002307603558
+      - -13.657605476712448
+      - {name: ''}
+    - - 48.86366678204689
+      - -11.445798238529298
+      - {name: ''}
+    - - 43.05566708972736
+      - -11.47762009153495
+      - {name: ''}
+    - - 43.04487135110192
+      - -10.445832852582601
+      - {name: ''}
+    - - 43.07526633591019
+      - -7.430483442944508
+      - {is_passthrough_point: true, lift: lift_1, lift_cabin: lift_1, name: ''}
+    - - 41.034683281412285
+      - -11.488685050574988
+      - {name: ''}
+    - - 40.92788354294069
+      - -15.613303334487151
+      - {name: ''}
+    - - 36.84768662743744
+      - -11.511622629898861
+      - {name: ''}
+    - - 36.86968193531021
+      - -10.033252567208962
+      - {is_holding_point: true, is_parking_spot: false, name: L1_sub_waiting_area_3}
+    - - 32.977131648782766
+      - -11.532810276527835
+      - {name: ''}
+    - - 40.9051613399485
+      - -20.215195569401196
+      - {is_holding_point: true, is_parking_spot: true, name: L1_right_nurse_center}
+  L2:
+    lanes:
+    - - 0
+      - 1
+      - {speed_limit: 0}
+    - - 1
+      - 0
+      - {speed_limit: 0}
+    - - 2
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 2
+      - {speed_limit: 0}
+    - - 3
+      - 4
+      - {speed_limit: 0}
+    - - 4
+      - 3
+      - {speed_limit: 0}
+    - - 4
+      - 5
+      - {door_name: L2_clinic_a, speed_limit: 0}
+    - - 5
+      - 4
+      - {door_name: L2_clinic_a, speed_limit: 0}
+    - - 4
+      - 6
+      - {speed_limit: 0}
+    - - 6
+      - 4
+      - {speed_limit: 0}
+    - - 6
+      - 7
+      - {door_name: L2_clinic_b, speed_limit: 0}
+    - - 7
+      - 6
+      - {door_name: L2_clinic_b, speed_limit: 0}
+    - - 7
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 7
+      - {speed_limit: 0}
+    - - 8
+      - 9
+      - {speed_limit: 0}
+    - - 9
+      - 8
+      - {speed_limit: 0}
+    - - 9
+      - 10
+      - {speed_limit: 0}
+    - - 10
+      - 9
+      - {speed_limit: 0}
+    - - 10
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 10
+      - {speed_limit: 0}
+    - - 11
+      - 12
+      - {speed_limit: 0}
+    - - 12
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 11
+      - {speed_limit: 0}
+    - - 14
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 14
+      - {speed_limit: 0}
+    - - 15
+      - 16
+      - {speed_limit: 0}
+    - - 16
+      - 15
+      - {speed_limit: 0}
+    - - 16
+      - 13
+      - {speed_limit: 0}
+    - - 13
+      - 16
+      - {speed_limit: 0}
+    - - 17
+      - 18
+      - {speed_limit: 0}
+    - - 18
+      - 17
+      - {speed_limit: 0}
+    - - 18
+      - 19
+      - {door_name: L2_right_inner, speed_limit: 0}
+    - - 19
+      - 18
+      - {door_name: L2_right_inner, speed_limit: 0}
+    - - 18
+      - 20
+      - {speed_limit: 0}
+    - - 20
+      - 18
+      - {speed_limit: 0}
+    - - 19
+      - 21
+      - {speed_limit: 0}
+    - - 21
+      - 19
+      - {speed_limit: 0}
+    - - 20
+      - 22
+      - {speed_limit: 0}
+    - - 22
+      - 20
+      - {speed_limit: 0}
+    - - 22
+      - 23
+      - {speed_limit: 0}
+    - - 23
+      - 22
+      - {speed_limit: 0}
+    - - 22
+      - 24
+      - {speed_limit: 0}
+    - - 24
+      - 22
+      - {speed_limit: 0}
+    - - 24
+      - 25
+      - {speed_limit: 0}
+    - - 25
+      - 24
+      - {speed_limit: 0}
+    - - 24
+      - 26
+      - {speed_limit: 0}
+    - - 26
+      - 24
+      - {speed_limit: 0}
+    - - 26
+      - 0
+      - {speed_limit: 0}
+    - - 0
+      - 26
+      - {speed_limit: 0}
+    - - 0
+      - 27
+      - {speed_limit: 0}
+    - - 27
+      - 0
+      - {speed_limit: 0}
+    - - 27
+      - 28
+      - {speed_limit: 0}
+    - - 28
+      - 27
+      - {speed_limit: 0}
+    - - 27
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 27
+      - {speed_limit: 0}
+    - - 20
+      - 29
+      - {speed_limit: 0}
+    - - 29
+      - 20
+      - {speed_limit: 0}
+    - - 29
+      - 30
+      - {speed_limit: 0}
+    - - 30
+      - 29
+      - {speed_limit: 0}
+    - - 29
+      - 31
+      - {speed_limit: 0}
+    - - 31
+      - 29
+      - {speed_limit: 0}
+    - - 31
+      - 32
+      - {door_name: m, speed_limit: 0}
+    - - 32
+      - 31
+      - {door_name: m, speed_limit: 0}
+    - - 31
+      - 33
+      - {speed_limit: 0}
+    - - 33
+      - 31
+      - {speed_limit: 0}
+    - - 33
+      - 34
+      - {speed_limit: 0}
+    - - 34
+      - 33
+      - {speed_limit: 0}
+    - - 34
+      - 35
+      - {speed_limit: 0}
+    - - 35
+      - 34
+      - {speed_limit: 0}
+    - - 34
+      - 36
+      - {speed_limit: 0}
+    - - 36
+      - 34
+      - {speed_limit: 0}
+    - - 36
+      - 37
+      - {speed_limit: 0}
+    - - 37
+      - 36
+      - {speed_limit: 0}
+    - - 36
+      - 5
+      - {speed_limit: 0}
+    - - 5
+      - 36
+      - {speed_limit: 0}
+    - - 17
+      - 16
+      - {speed_limit: 0}
+    - - 16
+      - 17
+      - {speed_limit: 0}
+    - - 17
+      - 38
+      - {speed_limit: 0}
+    - - 38
+      - 17
+      - {speed_limit: 0}
+    - - 32
+      - 39
+      - {speed_limit: 0}
+    - - 39
+      - 32
+      - {speed_limit: 0}
+    vertices:
+    - - 33.42594900196149
+      - -33.67053574862508
+      - {name: ''}
+    - - 31.12939117726244
+      - -33.77873543325259
+      - {is_holding_point: true, is_parking_spot: true, name: L2_sub_waiting_area_4}
+    - - 7.5381716087842845
+      - -43.694473289488904
+      - {is_passthrough_point: true, lift: lift_25, lift_cabin: lift_25, name: ''}
+    - - 9.286865889773479
+      - -42.01663782162228
+      - {name: ''}
+    - - 17.101176877812406
+      - -43.571412637975506
+      - {name: ''}
+    - - 17.0666358986193
+      - -40.419514634052575
+      - {name: ''}
+    - - 35.741486865889804
+      - -43.52300680743053
+      - {name: ''}
+    - - 39.0913426406677
+      - -43.5142840659975
+      - {name: ''}
+    - - 40.73506788200458
+      - -42.40665743625249
+      - {name: ''}
+    - - 44.721549171185764
+      - -39.72034921733783
+      - {name: ''}
+    - - 49.15849005807473
+      - -36.73046805892084
+      - {name: ''}
+    - - 49.155313257182456
+      - -28.196692434906375
+      - {name: ''}
+    - - 54.65801699934622
+      - -28.38633129495022
+      - {is_holding_point: true, is_parking_spot: true, name: L2_east_counter}
+    - - 49.14963270643441
+      - -12.92131456482444
+      - {name: ''}
+    - - 54.78936963962929
+      - -12.92131456482444
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: tinyRobot_2_charger,
+        spawn_robot_name: tinyRobot_2, spawn_robot_type: TinyRobot}
+    - - 54.763282181454606
+      - -10.800073074112543
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: tinyRobot_1_charger,
+        spawn_robot_name: tinyRobot_1, spawn_robot_type: TinyRobot}
+    - - 49.14882504519061
+      - -10.75890927272029
+      - {name: ''}
+    - - 43.12937963924468
+      - -10.751398023152966
+      - {name: ''}
+    - - 40.95984000615365
+      - -10.74870581900697
+      - {name: ''}
+    - - 40.70924964424449
+      - -17.121879927695105
+      - {name: ''}
+    - - 32.761809161186136
+      - -10.738475443252192
+      - {name: ''}
+    - - 40.589904234452554
+      - -20.37045498250069
+      - {is_parking_spot: true, name: L2_right_nurse_center}
+    - - 32.69878466212841
+      - -17.24860197684706
+      - {name: ''}
+    - - 30.997446252067252
+      - -17.255063266797446
+      - {is_holding_point: true, is_parking_spot: true, name: L2_sub_waiting_area_2}
+    - - 32.57507788161997
+      - -27.477335487096674
+      - {name: ''}
+    - - 31.038583131418047
+      - -27.456201684550617
+      - {is_holding_point: true, is_parking_spot: true, name: L2_sub_waiting_area_3}
+    - - 32.535583246798225
+      - -30.74203684473677
+      - {name: ''}
+    - - 35.1114572516442
+      - -39.21429560401526
+      - {name: ''}
+    - - 35.1114572516442
+      - -40.686123610630396
+      - {is_holding_point: true, is_parking_spot: true, name: L2_south_counter}
+    - - 30.053290258067022
+      - -10.735083266028239
+      - {name: ''}
+    - - 30.0840890734972
+      - -8.14380985346718
+      - {is_holding_point: true, is_parking_spot: true, name: L2_north_counter}
+    - - 21.078316218606993
+      - -10.723910618822362
+      - {name: ''}
+    - - 21.23815237875468
+      - -15.752274912503378
+      - {name: ''}
+    - - 14.692354140225389
+      - -10.715941694550219
+      - {name: ''}
+    - - 12.067212799507722
+      - -17.458163147571263
+      - {name: ''}
+    - - 8.268620437675482
+      - -17.52199530787279
+      - {is_holding_point: true, is_parking_spot: true, name: L2_west_counter}
+    - - 12.408745817468569
+      - -33.6228029691166
+      - {name: ''}
+    - - 8.123322179916164
+      - -33.64547132802588
+      - {is_holding_point: true, is_parking_spot: true, name: L2_sub_waiting_area_1}
+    - - 43.07526633591019
+      - -7.430483442944508
+      - {is_passthrough_point: true, lift: lift_1, lift_cabin: lift_1, name: ''}
+    - - 21.515099419253126
+      - -19.81416483981387
+      - {is_holding_point: true, is_parking_spot: true, name: L2_left_nurse_center}

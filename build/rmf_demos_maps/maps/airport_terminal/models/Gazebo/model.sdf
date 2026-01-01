@@ -1,0 +1,23 @@
+<sdf version="1.6">
+    <model name="gazebo">
+        <static>true</static>
+        <link name="link">
+            <collision name="collision">
+                <geometry>
+                    <mesh>
+                        <scale>3 3 2.5</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/gazebo/3/files/meshes/gazebo.dae</uri>
+                    </mesh>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <mesh>
+                        <scale>3 3 2.5</scale>
+                        <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/gazebo/3/files/meshes/gazebo.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

@@ -1,0 +1,53 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ros2/rmf_ws/build/rmf_demos_dashboard_resources
+[100%] Built target build
+-- Install configuration: ""
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/package_run_dependencies/rmf_demos_dashboard_resources
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/parent_prefix_path/rmf_demos_dashboard_resources
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/ament_prefix_path.sh
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/ament_prefix_path.dsv
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/path.sh
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/environment/path.dsv
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.bash
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.sh
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.zsh
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/local_setup.dsv
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/package.dsv
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/ament_index/resource_index/packages/rmf_demos_dashboard_resources
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/cmake/rmf_demos_dashboard_resourcesConfig.cmake
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/cmake/rmf_demos_dashboard_resourcesConfig-version.cmake
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/package.xml
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/cleanerBotA.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/caddy.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/deliveryRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/tinyRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/cleanerBotE.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/icons/headerLogo.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/main.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/airport_terminal/dashboard_config.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/fridge.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/roshealth-logo-blue.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/deliveryRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/humanIcon.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/tinyRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/icons/headerLogo.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/main.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/office/dashboard_config.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/cleanerBotA.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/deliveryRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/tinyRobot.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/icons/headerLogo.png
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/main.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/hotel/dashboard_config.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic/main.json
+-- Installing: /home/ros2/rmf_ws/install/rmf_demos_dashboard_resources/share/rmf_demos_dashboard_resources/clinic/dashboard_config.json

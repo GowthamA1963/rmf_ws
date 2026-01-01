@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: rmf_demos_fleet_adapter
+Version: 2.0.3
+Summary: Fleet adapters for interfacing with RMF Demos robots with a fleet manager via REST API
+Maintainer: Xi Yu Oh
+Maintainer-email: xiyu@openrobotics.org
+License: Apache License 2.0
+Requires-Dist: setuptools
+Requires-Dist: fastapi>=0.79.0
+Requires-Dist: uvicorn>=0.18.2
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

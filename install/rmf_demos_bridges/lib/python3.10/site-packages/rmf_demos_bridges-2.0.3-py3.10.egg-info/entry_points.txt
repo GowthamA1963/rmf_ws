@@ -1,0 +1,3 @@
+[console_scripts]
+fleet_robotmanager_mqtt_bridge = rmf_demos_bridges.fleet_robotmanager_mqtt_bridge:main
+fleet_socketio_bridge = rmf_demos_bridges.fleet_socketio_bridge:main
