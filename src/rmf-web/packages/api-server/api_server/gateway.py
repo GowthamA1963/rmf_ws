@@ -19,6 +19,8 @@ from rmf_dispenser_msgs.msg import DispenserState as RmfDispenserState
 from rmf_door_msgs.msg import DoorMode as RmfDoorMode
 from rmf_door_msgs.msg import DoorRequest as RmfDoorRequest
 from rmf_door_msgs.msg import DoorState as RmfDoorState
+from rmf_fleet_msgs.msg import FleetState as RmfFleetState
+from rmf_fleet_msgs.msg import RobotMode as RmfRobotMode
 from rmf_ingestor_msgs.msg import IngestorState as RmfIngestorState
 from rmf_lift_msgs.msg import LiftRequest as RmfLiftRequest
 from rmf_lift_msgs.msg import LiftState as RmfLiftState
@@ -27,9 +29,17 @@ from rmf_task_msgs.srv import SubmitTask as RmfSubmitTask
 from rosidl_runtime_py.convert import message_to_ordereddict
 
 from .logger import logger as base_logger
-from .models import BuildingMap, DispenserState, DoorState, IngestorState, LiftState
+from .models import (
+    BuildingMap,
+    DispenserState,
+    DoorState,
+    FleetState,
+    IngestorState,
+    LiftState,
+)
+from .models.rmf_api.robot_state import Status as RobotStatus
 from .repositories import CachedFilesRepository, cached_files_repo
-from .rmf_io import rmf_events
+from .rmf_io import fleet_events, rmf_events
 from .ros import ros_node
 
 
@@ -56,6 +66,36 @@ def process_building_map(
             urlpath = cached_files.add_file(cast(bytes, image.data), relpath)
             processed_map["levels"][i]["images"][j]["data"] = urlpath
     return BuildingMap(**processed_map)
+
+
+def convert_fleet_state(msg: RmfFleetState) -> FleetState:
+    robots = {}
+    for r in msg.robots:
+        status = RobotStatus.idle
+        if r.mode.mode == RmfRobotMode.MODE_MOVING:
+            status = RobotStatus.working
+        elif r.mode.mode == RmfRobotMode.MODE_CHARGING:
+            status = RobotStatus.charging
+        elif r.mode.mode == RmfRobotMode.MODE_ADAPTER_ERROR:
+            status = RobotStatus.error
+
+        loc = None
+        if r.location:
+            loc = {
+                "x": r.location.x,
+                "y": r.location.y,
+                "yaw": r.location.yaw,
+                "map": r.location.level_name,
+            }
+
+        robots[r.name] = {
+            "name": r.name,
+            "status": status,
+            "battery": r.battery_percent / 100.0,
+            "location": loc,
+            "task_id": r.task_id,
+        }
+    return FleetState(name=msg.name, robots=robots)
 
 
 class RmfGateway:
@@ -140,6 +180,14 @@ class RmfGateway:
             10,
         )
         self._subscriptions.append(ingestor_states_sub)
+
+        fleet_states_sub = ros_node().create_subscription(
+            RmfFleetState,
+            "fleet_states",
+            lambda msg: fleet_events.fleet_states.on_next(convert_fleet_state(msg)),
+            10,
+        )
+        self._subscriptions.append(fleet_states_sub)
 
         map_sub = ros_node().create_subscription(
             RmfBuildingMap,
