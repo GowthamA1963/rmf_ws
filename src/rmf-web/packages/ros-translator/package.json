@@ -1,0 +1,19 @@
+{
+  "name": "ros-translator",
+  "version": "0.0.0",
+  "private": true,
+  "description": "dummy package",
+  "main": "index.js",
+  "scripts": {
+    "test": ". ../../.venv/bin/activate && ./test.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jasmine": "^3.8.2",
+    "jasmine": "^3.6.6",
+    "pipenv-install": "workspace:*",
+    "ts-node": "^9.1.1",
+    "typescript": "~5.4.3"
+  }
+}

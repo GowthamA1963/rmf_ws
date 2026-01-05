@@ -1,0 +1,34 @@
+name: ros-translator
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ros-translator.yml'
+      - 'packages/ros-translator/**'
+  push:
+    branches:
+      - main
+env:
+  CI: true
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/${{ github.repository }}/e2e
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: packages/ros-translator
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        run: apt update && apt install -y python3-venv python-is-python3
+      - name: bootstrap
+        uses: ./.github/actions/bootstrap
+        with:
+          package: ros-translator
+      - name: test
+        run: . /opt/ros/humble/setup.bash && pnpm test

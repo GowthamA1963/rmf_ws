@@ -1,0 +1,26 @@
+# ===== ROS 2 / RMF =====
+build/
+install/
+log/
+
+# ===== Frontend (rmf-web) =====
+node_modules/
+**/node_modules/
+.pnpm-store/
+**/.cache/
+dist/
+build/
+
+# ===== Large / generated =====
+*.zip
+*.db3
+*.bag
+*.bag.active
+
+# ===== IDE / OS =====
+.vscode/
+.DS_Store
+
+# ===== Python =====
+__pycache__/
+*.pyc

@@ -1,0 +1,27 @@
+name: api-client
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/api-client.yml'
+      - 'packages/api-client/**'
+  push:
+    branches:
+      - main
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: packages/api-client
+    steps:
+      - uses: actions/checkout@v2
+      - name: bootstrap
+        uses: ./.github/actions/bootstrap
+        with:
+          package: api-client
+      - name: lint
+        run: pnpm run lint
+      - name: test
+        run: pnpm test
