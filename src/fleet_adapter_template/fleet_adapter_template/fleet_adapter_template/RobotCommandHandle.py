@@ -71,7 +71,6 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                  charger_waypoint,
                  update_frequency,
                  lane_merge_distance,
-                 lane_merge_distance,
                  adapter,
                  api):
         adpt.RobotCommandHandle.__init__(self)
@@ -683,6 +682,14 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
             del waypoints[:begin_at_index]
 
         return waypoints
+
+    def get_speed_limit(self, target: PlanWaypoint) -> float:
+        """
+        Return the speed limit for the given target waypoint.
+        For now, we return 0.0 (no limit/default) as the graph lookup
+        attributes need verification.
+        """
+        return 0.0
 
     # --------------------------------------------------------------------------
     # Actions / docking / mode

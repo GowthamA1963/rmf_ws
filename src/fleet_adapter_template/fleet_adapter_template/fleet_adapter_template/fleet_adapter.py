@@ -31,7 +31,8 @@ import rmf_adapter.graph as graph
 import rmf_adapter.plan as plan
 
 from rmf_task_msgs.msg import TaskProfile, TaskType
-from rmf_fleet_msgs.msg import LaneRequest, ClosedLanes
+from rmf_task_msgs.msg import TaskProfile, TaskType, TaskSummary
+from rmf_fleet_msgs.msg import LaneRequest, ClosedLanes, FleetState
 
 from functools import partial
 
@@ -325,13 +326,77 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
 
 
 # ------------------------------------------------------------------------------
+# QoS Republisher
+# ------------------------------------------------------------------------------
+class QoSRepublisher(rclpy.node.Node):
+    def __init__(self, fleet_name):
+        super().__init__(f'{fleet_name}_qos_republisher',
+                         use_global_arguments=False)
+
+        # QoS Profiles
+        transient_qos = QoSProfile(
+            history=History.KEEP_LAST,
+            depth=1,
+            reliability=Reliability.RELIABLE,
+            durability=Durability.TRANSIENT_LOCAL)
+
+        volatile_qos = QoSProfile(
+            history=History.KEEP_LAST,
+            depth=1,
+            reliability=Reliability.RELIABLE,
+            durability=Durability.VOLATILE)
+
+        # Fleet State Republishing
+        self.fleet_state_pub = self.create_publisher(
+            FleetState,
+            'fleet_states',
+            transient_qos)
+
+        self.create_subscription(
+            FleetState,
+            'fleet_states_internal',
+            self.fleet_state_cb,
+            volatile_qos)
+
+        # Task Summary Republishing
+        self.task_summary_pub = self.create_publisher(
+            TaskSummary,
+            'task_summaries',
+            transient_qos)
+
+        self.create_subscription(
+            TaskSummary,
+            'task_summaries_internal',
+            self.task_summary_cb,
+            volatile_qos)
+
+    def fleet_state_cb(self, msg):
+        self.fleet_state_pub.publish(msg)
+
+    def task_summary_cb(self, msg):
+        self.task_summary_pub.publish(msg)
+
+
+# ------------------------------------------------------------------------------
 # Main
 # ------------------------------------------------------------------------------
 def main(argv=sys.argv):
     # Init rclpy and adapter
-    rclpy.init(args=argv)
-    adpt.init_rclcpp()
+    # Init rclpy and adapter
+    # Inject remappings to internal topics for the C++ adapter
     args_without_ros = rclpy.utilities.remove_ros_args(argv)
+
+    argv_with_remaps = argv + [
+        '--ros-args',
+        '-r', 'fleet_states:=fleet_states_internal',
+        '-r', 'task_summaries:=task_summaries_internal'
+    ]
+
+    rclpy.init(args=argv_with_remaps)
+
+    # Update sys.argv so adpt.init_rclcpp() sees the remappings
+    sys.argv = argv_with_remaps
+    adpt.init_rclcpp()
 
     parser = argparse.ArgumentParser(
         prog="fleet_adapter",
@@ -379,11 +444,16 @@ def main(argv=sys.argv):
     rclpy_executor = rclpy.executors.SingleThreadedExecutor()
     rclpy_executor.add_node(node)
 
+    # Create and add QoS Republisher
+    qos_republisher = QoSRepublisher(fleet_name)
+    rclpy_executor.add_node(qos_republisher)
+
     # Start the fleet adapter
     rclpy_executor.spin()
 
     # Shutdown
     node.destroy_node()
+    qos_republisher.destroy_node()
     rclpy_executor.shutdown()
     rclpy.shutdown()
 
