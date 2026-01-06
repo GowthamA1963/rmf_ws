@@ -48,19 +48,19 @@ reference_coordinates:
     - [-0.04634631221209842, 0.03840620011662053, 0]
 
 robots:
-  robot1:
-    rmf_config:
-      start:
-        map_name: "L1"
-        waypoint: "Home1"
-        orientation: 0.0
-      charger:
-        waypoint: "ChargeRobot1"
-      robot_state_update_frequency: 2
+  # robot1:
+  #   rmf_config:
+  #     start:
+  #       map_name: "L1"
+  #       waypoint: "Home1"
+  #       orientation: 0.0
+  #     charger:
+  #       waypoint: "ChargeRobot1"
+  #     robot_state_update_frequency: 2
 
-    robot_config:
-      max_delay: 5
-      arrival_tolerance: 0.2
+  #   robot_config:
+  #     max_delay: 5
+  #     arrival_tolerance: 0.2
 
   robot2:
     rmf_config:

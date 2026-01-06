@@ -106,7 +106,7 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
     time.sleep(1.0)
 
     # We are not using an HTTP fleet manager, so server_uri is always None
-    server_uri = "ws://localhost:8000/_internal"
+    server_uri = None
 
     fleet_handle = adapter.add_fleet(
         fleet_name, vehicle_traits, nav_graph, server_uri)
