@@ -28,6 +28,7 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { Line } from '@react-three/drei';
 import { CameraControl, LayersController } from './three-fiber';
 import { Lifts, Door, RobotThree } from './three-fiber';
+import { getDoorStatusColor, getWaypointColor } from '../util/visualization-utils';
 
 const debug = Debug('MapApp');
 
@@ -37,7 +38,7 @@ const TrajectoryUpdateInterval = 2000;
 const colorManager = new ColorManager();
 
 const DEFAULT_ZOOM_LEVEL = 20;
-const DEFAULT_ROBOT_SCALE = 0.003;
+const DEFAULT_ROBOT_SCALE = 0.01;
 
 function getRobotId(fleetName: string, robotName: string): string {
   return `${fleetName}/${robotName}`;
@@ -469,15 +470,20 @@ export const MapApp = styled(
             : null}
 
           {!disabledLayers['Waypoints'] &&
-            waypoints.map((place, index) => (
-              <ShapeThreeRendering
-                key={index}
-                position={[place.vertex.x, place.vertex.y, 0]}
-                color="yellow"
-                text={place.vertex.name}
-                circleShape={false}
-              />
-            ))}
+            waypoints.map((place, index) => {
+              const isPickup = !!place.pickupHandler;
+              const isDropoff = !!place.dropoffHandler;
+              const waypointColor = isPickup ? '#10b981' : isDropoff ? '#8b5cf6' : '#f59e0b';
+              return (
+                <ShapeThreeRendering
+                  key={index}
+                  position={[place.vertex.x, place.vertex.y, 0]}
+                  color={waypointColor}
+                  text={place.vertex.name}
+                  circleShape={false}
+                />
+              );
+            })}
 
           {!disabledLayers['Waypoint labels'] &&
             waypoints
@@ -514,7 +520,7 @@ export const MapApp = styled(
               <ShapeThreeRendering
                 key={index}
                 position={[ingestor.location[0], ingestor.location[1], 0]}
-                color="red"
+                color="#ec4899"
                 circleShape={true}
               />
             ))}
@@ -524,21 +530,26 @@ export const MapApp = styled(
               <ShapeThreeRendering
                 key={index}
                 position={[dispenser.location[0], dispenser.location[1], 0]}
-                color="red"
+                color="#3b82f6"
                 circleShape={true}
               />
             ))}
           {!disabledLayers['Trajectories'] &&
-            trajectories.map((trajData) => (
-              <Line
-                key={trajData.trajectory.id}
-                points={trajData.trajectory.segments.map(
-                  (seg) => new Vector3(seg.x[0], seg.x[1], 4.5),
-                )}
-                color={trajData.color || 'magenta'}
-                linewidth={8}
-              />
-            ))}
+            trajectories.map((trajData) => {
+              const trajectoryColor = trajData.conflict ? '#ef4444' : '#10b981';
+              return (
+                <Line
+                  key={trajData.trajectory.id}
+                  points={trajData.trajectory.segments.map(
+                    (seg) => new Vector3(seg.x[0], seg.x[1], 6),
+                  )}
+                  color={trajectoryColor}
+                  linewidth={trajData.conflict ? 25 : 18}
+                  dashed={trajData.conflict}
+                  dashScale={trajData.conflict ? 2 : 1}
+                />
+              );
+            })}
           {!disabledLayers['Robots'] &&
             robots.map((robot) => {
               const robotId = `${robot.fleet}/${robot.name}`;

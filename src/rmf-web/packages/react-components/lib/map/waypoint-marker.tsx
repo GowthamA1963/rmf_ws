@@ -32,8 +32,8 @@ export const WaypointMarker = React.forwardRef(
             id={`waypoint-${waypointId}-shadow`}
             x="-20%"
             y="-20%"
-            width="140%"
-            height="140%"
+            width="200%"
+            height="200%"
             filterUnits="userSpaceOnUse"
           >
             <feDropShadow
@@ -50,7 +50,7 @@ export const WaypointMarker = React.forwardRef(
           y={cy - size / 2}
           width={size}
           height={size}
-          fill={'#FFBF00'}
+          fill={'#1900ffff'}
           filter={`url(#waypoint-${waypointId}-shadow)`}
         />
       </StyledG>

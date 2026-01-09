@@ -1,0 +1,593 @@
+/**
+ * Enhanced Theme CSS for RMF Dashboard
+ * Production-ready design system with modern aesthetics
+ */
+
+/* ============================================
+   GOOGLE FONTS IMPORT
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ============================================
+   CSS CUSTOM PROPERTIES - COLOR SYSTEM
+   ============================================ */
+:root {
+  /* Primary Colors - Deep Blue Gradient */
+  --color-primary-900: hsl(221, 83%, 20%);
+  --color-primary-800: hsl(221, 83%, 30%);
+  --color-primary-700: hsl(221, 83%, 40%);
+  --color-primary-600: hsl(221, 83%, 53%);
+  --color-primary-500: hsl(217, 91%, 60%);
+  --color-primary-400: hsl(213, 94%, 68%);
+  --color-primary-300: hsl(212, 92%, 76%);
+
+  /* Secondary Colors - Purple/Pink Gradient */
+  --color-secondary-900: hsl(258, 90%, 30%);
+  --color-secondary-800: hsl(258, 90%, 40%);
+  --color-secondary-700: hsl(258, 90%, 51%);
+  --color-secondary-600: hsl(258, 90%, 66%);
+  --color-secondary-500: hsl(330, 81%, 60%);
+  --color-secondary-400: hsl(330, 81%, 70%);
+
+  /* Success Colors - Emerald */
+  --color-success-900: hsl(158, 64%, 25%);
+  --color-success-700: hsl(158, 64%, 40%);
+  --color-success-500: hsl(158, 64%, 52%);
+  --color-success-300: hsl(158, 64%, 70%);
+
+  /* Warning Colors - Amber */
+  --color-warning-900: hsl(32, 95%, 30%);
+  --color-warning-700: hsl(32, 95%, 44%);
+  --color-warning-500: hsl(38, 92%, 50%);
+  --color-warning-300: hsl(38, 92%, 70%);
+
+  /* Error Colors - Red */
+  --color-error-900: hsl(0, 84%, 35%);
+  --color-error-700: hsl(0, 84%, 50%);
+  --color-error-500: hsl(0, 84%, 60%);
+  --color-error-300: hsl(0, 84%, 75%);
+
+  /* Neutral Colors - Slate */
+  --color-neutral-950: hsl(222, 47%, 11%);
+  --color-neutral-900: hsl(222, 47%, 15%);
+  --color-neutral-800: hsl(215, 25%, 27%);
+  --color-neutral-700: hsl(215, 20%, 40%);
+  --color-neutral-600: hsl(215, 16%, 47%);
+  --color-neutral-500: hsl(215, 14%, 64%);
+  --color-neutral-400: hsl(218, 11%, 73%);
+  --color-neutral-300: hsl(216, 12%, 84%);
+  --color-neutral-200: hsl(214, 15%, 91%);
+  --color-neutral-100: hsl(210, 20%, 96%);
+  --color-neutral-50: hsl(210, 20%, 98%);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-500) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-secondary-700) 0%, var(--color-secondary-500) 100%);
+  --gradient-success: linear-gradient(135deg, var(--color-success-700) 0%, var(--color-success-300) 100%);
+  --gradient-vibrant: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-600) 50%, var(--color-secondary-500) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--color-neutral-950) 0%, var(--color-neutral-900) 100%);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-bg-light: rgba(255, 255, 255, 0.15);
+  --glass-bg-dark: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.5);
+  --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.5);
+  --shadow-glow-warning: 0 0 20px rgba(245, 158, 11, 0.5);
+  --shadow-glow-error: 0 0 20px rgba(239, 68, 68, 0.5);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ============================================
+   DARK THEME OVERRIDES
+   ============================================ */
+[data-theme="dark"] {
+  --glass-bg: rgba(0, 0, 0, 0.3);
+  --glass-bg-light: rgba(0, 0, 0, 0.4);
+  --glass-bg-dark: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-vibrant);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Glassmorphism Effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-vibrant {
+  background: var(--gradient-vibrant);
+}
+
+/* Glow Effects */
+.glow-primary {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.glow-success {
+  box-shadow: var(--shadow-glow-success);
+}
+
+.glow-warning {
+  box-shadow: var(--shadow-glow-warning);
+}
+
+.glow-error {
+  box-shadow: var(--shadow-glow-error);
+}
+
+/* Status Colors */
+.status-active {
+  color: var(--color-success-500);
+}
+
+.status-idle {
+  color: var(--color-neutral-500);
+}
+
+.status-busy {
+  color: var(--color-warning-500);
+}
+
+.status-error {
+  color: var(--color-error-500);
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right var(--transition-base) ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left var(--transition-base) ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up var(--transition-base) ease-out;
+}
+
+.animate-slide-in-down {
+  animation: slide-in-down var(--transition-base) ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--transition-base) ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in var(--transition-base) ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in var(--transition-spring) ease-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC STYLES
+   ============================================ */
+
+/* Enhanced Robot Marker */
+.robot-marker {
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.robot-marker:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(var(--shadow-glow-primary));
+}
+
+.robot-marker.active {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced Waypoint Marker */
+.waypoint-marker {
+  transition: all var(--transition-fast);
+}
+
+.waypoint-marker:hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.8));
+}
+
+.waypoint-marker.pickup {
+  filter: drop-shadow(0 0 8px var(--color-success-500));
+}
+
+.waypoint-marker.dropoff {
+  filter: drop-shadow(0 0 8px var(--color-secondary-500));
+}
+
+/* Enhanced Trajectory Line */
+.trajectory-line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-width var(--transition-fast);
+}
+
+.trajectory-line.conflict {
+  stroke: var(--color-error-500);
+  stroke-dasharray: 5, 5;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Enhanced Door/Lift Indicators */
+.door-indicator {
+  transition: all var(--transition-base);
+}
+
+.door-indicator.open {
+  fill: var(--color-success-500);
+  opacity: 0.3;
+}
+
+.door-indicator.closed {
+  fill: var(--color-error-500);
+  opacity: 0.5;
+}
+
+.door-indicator.moving {
+  fill: var(--color-warning-500);
+  opacity: 0.4;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Enhanced Cards */
+.card-enhanced {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(15px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+}
+
+.card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Enhanced Badges */
+.badge-enhanced {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+
+.badge-success {
+  background: var(--gradient-success);
+  color: white;
+  box-shadow: var(--shadow-glow-success);
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, var(--color-warning-700) 0%, var(--color-warning-500) 100%);
+  color: white;
+  box-shadow: var(--shadow-glow-warning);
+}
+
+.badge-error {
+  background: linear-gradient(135deg, var(--color-error-700) 0%, var(--color-error-500) 100%);
+  color: white;
+  box-shadow: var(--shadow-glow-error);
+}
+
+/* Enhanced Buttons */
+.button-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.button-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width var(--transition-spring), height var(--transition-spring);
+}
+
+.button-enhanced:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.button-enhanced:active {
+  transform: scale(0.95);
+}
+
+/* Loading Skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-200) 0%,
+    var(--color-neutral-100) 50%,
+    var(--color-neutral-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Tooltip Enhancement */
+.tooltip-enhanced {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-shadow: var(--shadow-xl);
+  font-size: 0.875rem;
+  color: white;
+  z-index: var(--z-tooltip);
+}

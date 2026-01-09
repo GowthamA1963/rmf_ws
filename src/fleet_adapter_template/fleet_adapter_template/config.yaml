@@ -1,5 +1,6 @@
 rmf_fleet:
   name: "my_robot_fleet"
+  waypoint_csv_path: "/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template/fleet_adapter_template/final_goals.csv"
   limits:
     linear: [1.2, 0.2]      # vel, accel
     angular: [0.8, 0.2]     # vel, accel
@@ -39,8 +40,6 @@ rmf_fleet:
     ip: "127.0.0.1"
     port: 8002
 
-  lane_merge_distance: 0.5
-
 reference_coordinates:
   rmf:
     - [4.947627677647645, -3.848703947879665, 0]
@@ -55,12 +54,11 @@ robots:
   #       waypoint: "Home1"
   #       orientation: 0.0
   #     charger:
-  #       waypoint: "ChargeRobot1"
+  #       waypoint: "Charge1"
   #     robot_state_update_frequency: 2
 
   #   robot_config:
   #     max_delay: 5
-  #     arrival_tolerance: 0.2
 
   robot2:
     rmf_config:
@@ -69,13 +67,8 @@ robots:
         waypoint: "Home2"
         orientation: 0.0
       charger:
-        waypoint: "ChargeRobot2"
+        waypoint: "Charge2"
       robot_state_update_frequency: 2
 
     robot_config:
       max_delay: 5
-      arrival_tolerance: 0.2
-
-
-
-

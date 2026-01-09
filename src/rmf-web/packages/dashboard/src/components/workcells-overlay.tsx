@@ -39,19 +39,25 @@ export const WorkcellsOverlay = React.memo(
         {workcells.map((workcell) => {
           const [x, y] = fromRmfCoords(workcell.location);
           return (
-            <g key={workcell.guid}>
+            <g key={workcell.guid} className="workcell-marker">
               <WorkcellMarker
                 cx={x}
                 cy={y}
-                size={1}
+                size={1.2}
                 iconPath={workcell.iconPath}
                 onClick={(ev) => onWorkcellClick && onWorkcellClick(ev, workcell.guid)}
                 aria-label={workcell.guid}
-                style={{ transform: `scale(${scale})`, transformOrigin: `${x}px ${y}px` }}
+                style={{
+                  transform: `scale(${scale})`,
+                  transformOrigin: `${x}px ${y}px`,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                fill="#3b82f6"
                 labelText={workcell.guid}
                 labelSourceX={x}
                 labelSourceY={y}
-                labelSourceRadius={0.5 * scale}
+                labelSourceRadius={0.6 * scale}
                 hideLabel={hideLabels}
               />
             </g>

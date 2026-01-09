@@ -20,7 +20,7 @@ export const TextThreeRendering = ({ position, text }: TextThreeRenderingProps):
     setIsHovered(false);
   };
 
-  const scaleFactor = isHovered ? 2 : 1.0;
+  const scaleFactor = isHovered ? 1.5 : 1.0;
   const positionX = text && text.length > 5 ? -2 : -1;
   return (
     <>
@@ -31,12 +31,16 @@ export const TextThreeRendering = ({ position, text }: TextThreeRenderingProps):
               {text && (
                 <div
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px',
-                    fontSize: '0.6rem',
+                    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                    color: '#ffffff',
+                    padding: '0.3rem 0.6rem',
+                    borderRadius: '6px',
+                    fontSize: '1.2rem',
+                    fontWeight: '600',
                     transform: `scale(${scaleFactor})`,
-                    transition: 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)',
+                    transition: 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
+                    whiteSpace: 'nowrap',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                   }}
                   onPointerOver={handlePointerOver}
                   onPointerOut={handlePointerOut}

@@ -89,7 +89,6 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
         self.charger_waypoint_index = waypoint.index
         self.update_frequency = update_frequency
         self.lane_merge_distance = lane_merge_distance
-        self.arrival_tolerance = config.get('arrival_tolerance', 0.5)
         self.update_handle = None  # RobotUpdateHandle
         self.battery_soc = 1.0
         self.api = api
@@ -303,7 +302,8 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
             def _follow_path():
                 target_pose = None
                 path_index = 0
-                while True:
+                while self.remaining_waypoints \
+                        or self.state == RobotState.MOVING:
                     # Save the current_cmd_id before checking if we need to
                     # abort.
                     cmd_id = self.current_cmd_id
@@ -315,43 +315,65 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                         )
                         return
 
-                    # Check loop condition under lock
-                    with self._lock:
-                        if not self.remaining_waypoints and self.state != RobotState.MOVING:
-                            break
+                    # State machine
+                    if self.state == RobotState.IDLE or target_pose is None:
+                        # Assign the next waypoint
+                        self.target_waypoint = self.remaining_waypoints[0]
+                        path_index = self.remaining_waypoints[0].index
 
-                        # State machine prep
-                        should_navigate = False
-                        current_target = None
-                        if self.state == RobotState.IDLE or target_pose is None:
-                            if self.remaining_waypoints:
-                                self.target_waypoint = self.remaining_waypoints[0]
-                                path_index = self.remaining_waypoints[0].index
-                                target_pose = self.target_waypoint.position
-                                current_target = self.target_waypoint
-                                should_navigate = True
-
-                    if should_navigate:
                         # Move robot to next waypoint
+                        target_pose = self.target_waypoint.position
                         [x, y] = target_pose[:2]
                         theta = target_pose[2]
                         speed_limit = \
-                            self.get_speed_limit(current_target)
+                            self.get_speed_limit(self.target_waypoint)
+                        
+                        # Get waypoint name if available
+                        waypoint_name = None
+                        if self.target_waypoint.graph_index is not None:
+                            wp = self.graph.get_waypoint(self.target_waypoint.graph_index)
+                            if wp:
+                                # Try multiple methods to extract name
+                                # Method 1: Direct name attribute
+                                if hasattr(wp, 'name') and wp.name:
+                                    waypoint_name = wp.name
+                                # Method 2: Check in properties dict
+                                elif hasattr(wp, 'properties') and hasattr(wp.properties, 'name'):
+                                    waypoint_name = wp.properties.name
+                                # Method 3: Try to get name from graph keys
+                                elif hasattr(self.graph, 'keys') and self.target_waypoint.graph_index in self.graph.keys:
+                                    waypoint_name = self.graph.keys[self.target_waypoint.graph_index]
+                                
+                                if waypoint_name:
+                                    self.node.get_logger().info(
+                                        f"[{self.name}] Extracted waypoint name: '{waypoint_name}' "
+                                        f"from graph_index {self.target_waypoint.graph_index}"
+                                    )
+                                else:
+                                    self.node.get_logger().warn(
+                                        f"[{self.name}] Waypoint at graph_index {self.target_waypoint.graph_index} "
+                                        f"has no name attribute or empty name. Position: ({x:.2f}, {y:.2f}). "
+                                        f"Will try position matching with CSV."
+                                    )
+                        else:
+                            self.node.get_logger().info(
+                                f"[{self.name}] No graph_index for target waypoint. "
+                                f"Position: ({x:.2f}, {y:.2f})"
+                            )
 
                         response = self.api.navigate(
                             self.name,
                             self.next_cmd_id(),
                             [x, y, theta],
                             self.map_name,
-                            speed_limit
+                            speed_limit,
+                            waypoint_name
                         )
 
                         if response:
-                            with self._lock:
-                                if self.remaining_waypoints:
-                                    self.remaining_waypoints = \
-                                        self.remaining_waypoints[1:]
-                                self.state = RobotState.MOVING
+                            self.remaining_waypoints = \
+                                self.remaining_waypoints[1:]
+                            self.state = RobotState.MOVING
                         else:
                             self.node.get_logger().info(
                                 f"Robot {self.name} failed to request "
@@ -397,7 +419,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                                             is not None and
                                             self.dist(
                                                 self.position,
-                                                target_pose) < self.arrival_tolerance):
+                                                target_pose) < 0.5):
                                         self.on_waypoint = \
                                             self.target_waypoint.graph_index
                                     elif (self.last_known_waypoint_index
@@ -406,7 +428,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                                               self.position,
                                               self.graph.get_waypoint(
                                                   self.last_known_waypoint_index
-                                              ).location) < self.arrival_tolerance):
+                                              ).location) < 0.5):
                                         self.on_waypoint = \
                                             self.last_known_waypoint_index
                                     else:
@@ -631,8 +653,16 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
         assert len(B) > 1
         return math.sqrt((A[0] - B[0]) ** 2 + (A[1] - B[1]) ** 2)
 
+    def get_speed_limit(self, target_waypoint):
+        approach_lane_limit = np.inf
+        approach_lanes = target_waypoint.approach_lanes
+        for lane_index in approach_lanes:
+            lane = self.graph.get_lane(lane_index)
+            lane_limit = lane.properties.speed_limit
+            if lane_limit is not None:
+                if lane_limit < approach_lane_limit:
+                    approach_lane_limit = lane_limit
         return approach_lane_limit if approach_lane_limit != np.inf else 0.0
-
 
     def filter_waypoints(self, wps: list):
         """Return filtered PlanWaypoints close to current position."""
@@ -683,14 +713,6 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
 
         return waypoints
 
-    def get_speed_limit(self, target: PlanWaypoint) -> float:
-        """
-        Return the speed limit for the given target waypoint.
-        For now, we return 0.0 (no limit/default) as the graph lookup
-        attributes need verification.
-        """
-        return 0.0
-
     # --------------------------------------------------------------------------
     # Actions / docking / mode
     # --------------------------------------------------------------------------
@@ -730,15 +752,14 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                             else:
                                 self.target_waypoint = return_waypoint
 
-        with self._lock:
-            if (not need_to_replan and self.target_waypoint is not None):
-                for wp in self.remaining_waypoints:
-                    for lane in wp.approach_lanes:
-                        if lane in closed_lanes:
-                            need_to_replan = True
-                            break
-                    if need_to_replan:
+        if (not need_to_replan and self.target_waypoint is not None):
+            for wp in self.remaining_waypoints:
+                for lane in wp.approach_lanes:
+                    if lane in closed_lanes:
+                        need_to_replan = True
                         break
+                if need_to_replan:
+                    break
 
         if need_to_replan:
             self.update_handle.replan()

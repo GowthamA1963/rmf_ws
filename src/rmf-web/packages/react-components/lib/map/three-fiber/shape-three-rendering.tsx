@@ -46,14 +46,14 @@ export const ShapeThreeRendering = ({
   return (
     <>
       {circleShape ? (
-        <Circle args={[0.3, 64]} position={[position[0], position[1], positionZ]}>
+        <Circle args={[0.6, 64]} position={[position[0], position[1], positionZ]}>
           <meshBasicMaterial color={color} />
         </Circle>
       ) : (
         <group position={position}>
           <mesh
             position={[0, 0, positionZ]}
-            scale={[0.5, 0.5, 0.5]}
+            scale={[1.0, 1.0, 1.0]}
             onPointerOver={debouncedHandlePointerOver}
             onPointerOut={debouncedHandlePointerOut}
           >
@@ -61,20 +61,24 @@ export const ShapeThreeRendering = ({
               <Html zIndexRange={[1]}>
                 <div
                   style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px',
-                    fontSize: '0.6rem',
+                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                    color: '#ffffff',
+                    padding: '0.4rem 0.7rem',
+                    borderRadius: '6px',
+                    fontSize: '1.1rem',
+                    fontWeight: '600',
                     transform: `scale(${scaleFactor})`,
                     transition: 'transform 0.3s',
+                    whiteSpace: 'nowrap',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                   }}
                 >
                   {text}
                 </div>
               </Html>
             )}
-            <boxGeometry args={[1.3, 1.3, 1.3]} />
-            <meshStandardMaterial color={color} opacity={0.6} transparent />
+            <boxGeometry args={[2.5, 2.5, 2.5]} />
+            <meshStandardMaterial color={color} opacity={0.7} transparent />
           </mesh>
         </group>
       )}

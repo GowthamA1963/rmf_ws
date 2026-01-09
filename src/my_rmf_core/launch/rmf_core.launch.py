@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    nav_graph_path = "/home/robot1/rmf_ws/src/my_rmf_core/maps/office_test.building.yaml"
+    nav_graph_path = "//home/robot1/rmf_ws/src/my_rmf_core/maps/try.building.yaml"
 
     return LaunchDescription([
 
@@ -30,13 +30,12 @@ def generate_launch_description():
             output="screen"
         ),
 
-        # 4) Trajectory Server
+        # 4) Trajectory Server for Web Interface
         Node(
             package="my_rmf_core",
             executable="trajectory_server",
             name="trajectory_server",
             output="screen"
-        )
-
+        ),
 
     ])

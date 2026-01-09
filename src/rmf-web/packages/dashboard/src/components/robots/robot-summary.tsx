@@ -38,31 +38,59 @@ import {
 
 const setTaskDialogColor = (robotStatus?: RobotStatus | null) => {
   if (!robotStatus) {
-    return base.palette.background.default;
+    return 'rgba(255, 255, 255, 0.95)';
   }
 
   switch (robotStatus) {
     case RobotStatus.Error:
-      return base.palette.error.dark;
+      return 'rgba(239, 68, 68, 0.15)';
 
     case RobotStatus.Working:
-      return base.palette.success.dark;
+      return 'rgba(16, 185, 129, 0.15)';
+
+    case RobotStatus.Charging:
+      return 'rgba(245, 158, 11, 0.15)';
 
     default:
-      return base.palette.warning.main;
+      return 'rgba(148, 163, 184, 0.15)'; // Neutral with transparency
   }
 };
 
 const LinearProgressWithLabel = (props: LinearProgressProps & { value: number }) => {
+  const getProgressColor = (value: number) => {
+    if (value < 30) return '#ef4444';
+    if (value < 70) return '#f59e0b';
+    return '#10b981';
+  };
+
   return (
     <Box component="div" sx={{ display: 'flex', alignItems: 'center' }}>
       <Box component="div" sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress
+          variant="determinate"
+          {...props}
+          sx={{
+            height: 8,
+            borderRadius: 4,
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            '& .MuiLinearProgress-bar': {
+              borderRadius: 4,
+              backgroundColor: getProgressColor(props.value),
+              transition: 'all 0.3s ease',
+            },
+          }}
+        />
       </Box>
       <Box component="div" sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            fontWeight: 600,
+            color: getProgressColor(props.value),
+          }}
+        >
+          {`${Math.round(props.value)}%`}
+        </Typography>
       </Box>
     </Box>
   );
@@ -142,8 +170,8 @@ export const RobotSummary = React.memo(({ onClose, robot }: RobotSummaryProps) =
 
     return Math.min(
       1.0 -
-        taskState.estimate_millis /
-          (taskState.unix_millis_finish_time - taskState.unix_millis_start_time),
+      taskState.estimate_millis /
+      (taskState.unix_millis_finish_time - taskState.unix_millis_start_time),
       1,
     );
   }, [taskState]);
@@ -238,7 +266,10 @@ export const RobotSummary = React.memo(({ onClose, robot }: RobotSummaryProps) =
       PaperProps={{
         style: {
           backgroundColor: setTaskDialogColor(robotState?.status),
-          boxShadow: 'none',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
         },
       }}
       open={isOpen}
@@ -248,6 +279,12 @@ export const RobotSummary = React.memo(({ onClose, robot }: RobotSummaryProps) =
       }}
       fullWidth
       maxWidth="sm"
+      sx={{
+        '& .MuiBackdrop-root': {
+          backdropFilter: 'blur(4px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        },
+      }}
     >
       <Grid container mb={1} alignItems="center" spacing={1}>
         <Grid item xs={2}></Grid>
@@ -256,9 +293,8 @@ export const RobotSummary = React.memo(({ onClose, robot }: RobotSummaryProps) =
         </Grid>
         <Grid item xs={2}>
           <Grid container justifyContent="flex-end">
-            <Typography variant="subtitle1">{`${
-              robotState?.battery ? (robotState.battery * 100).toFixed(0) : 0
-            }%`}</Typography>
+            <Typography variant="subtitle1">{`${robotState?.battery ? (robotState.battery * 100).toFixed(0) : 0
+              }%`}</Typography>
             {robotState && (
               <>{showBatteryIcon(robot, robotState.battery ? robotState?.battery * 100 : 0)}</>
             )}
