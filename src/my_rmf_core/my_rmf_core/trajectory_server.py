@@ -28,6 +28,9 @@ class TrajectoryServer(Node):
                 if data.get('request') == 'trajectory':
                     response = self.generate_trajectory_response(data)
                     await websocket.send(json.dumps(response))
+                elif data.get('request') == 'fleet_state':
+                    response = self.generate_fleet_state_response(data)
+                    await websocket.send(json.dumps(response))
                 elif data.get('request') == 'time':
                      # Simple time response
                     response = {
@@ -37,6 +40,49 @@ class TrajectoryServer(Node):
                     await websocket.send(json.dumps(response))
         except websockets.exceptions.ConnectionClosed:
             pass
+
+    def get_robot_status(self, robot):
+        """
+        Determine if a robot is ONLINE or OFFLINE based on fleet state data.
+        
+        A robot is considered ONLINE if:
+        - It has a valid location (commissioned and Nav2 running)
+        
+        A robot is considered OFFLINE if:
+        - It has no location or invalid position (decommissioned or Nav2 down)
+        """
+        if robot.location and (robot.location.x != 0 or robot.location.y != 0):
+            return "ONLINE"
+        return "OFFLINE"
+
+    def generate_fleet_state_response(self, request):
+        """
+        Generate response with robot status information for all robots.
+        This includes robots without active paths (idle robots).
+        """
+        robots = []
+        
+        for fleet_name, fleet_state in self.fleet_states.items():
+            for robot in fleet_state.robots:
+                robot_info = {
+                    'name': robot.name,
+                    'fleet': fleet_name,
+                    'status': self.get_robot_status(robot),
+                    'battery': robot.battery_percent,
+                    'location': {
+                        'x': robot.location.x if robot.location else 0,
+                        'y': robot.location.y if robot.location else 0,
+                        'yaw': robot.location.yaw if robot.location else 0,
+                        'level': robot.location.level_name if robot.location else ""
+                    } if robot.location else None,
+                    'mode': robot.mode.mode if robot.mode else 0
+                }
+                robots.append(robot_info)
+        
+        return {
+            'response': 'fleet_state',
+            'robots': robots
+        }
 
     def generate_trajectory_response(self, request):
         trajectories = []
@@ -77,7 +123,8 @@ class TrajectoryServer(Node):
                     'segments': segments,
                     'robot_name': robot.name,
                     'fleet_name': fleet_name,
-                    'map_name': robot.location.level_name if robot.location else ""
+                    'map_name': robot.location.level_name if robot.location else "",
+                    'status': self.get_robot_status(robot)  # Add ONLINE/OFFLINE status
                 }
                 trajectories.append(traj)
                 path_id_counter += 1

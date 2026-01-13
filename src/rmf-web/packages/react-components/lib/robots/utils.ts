@@ -13,7 +13,7 @@ export function robotStatusToUpperCase(status: RobotStatus): string {
     case RobotStatus.Charging:
       return 'CHARGING';
     case RobotStatus.Idle:
-      return 'IDLE';
+      return 'ONLINE';  // Changed from 'IDLE' to 'ONLINE' for clarity
     case RobotStatus.Working:
       return 'WORKING';
     case RobotStatus.Offline:

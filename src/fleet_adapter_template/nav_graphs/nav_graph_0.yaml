@@ -1,4 +1,4 @@
-building_name: try
+building_name: office_test
 levels:
   L1:
     lanes:
@@ -8,17 +8,17 @@ levels:
     - - 1
       - 0
       - {speed_limit: 0}
-    - - 1
-      - 2
-      - {speed_limit: 0}
-    - - 2
-      - 1
-      - {speed_limit: 0}
     - - 2
       - 3
       - {speed_limit: 0}
     - - 3
       - 2
+      - {speed_limit: 0}
+    - - 1
+      - 3
+      - {speed_limit: 0}
+    - - 3
+      - 1
       - {speed_limit: 0}
     - - 3
       - 4
@@ -26,28 +26,22 @@ levels:
     - - 4
       - 3
       - {speed_limit: 0}
-    - - 3
+    - - 4
       - 5
       - {speed_limit: 0}
     - - 5
-      - 3
+      - 4
       - {speed_limit: 0}
-    - - 5
+    - - 4
       - 6
       - {speed_limit: 0}
     - - 6
-      - 5
+      - 4
       - {speed_limit: 0}
     - - 6
       - 7
       - {speed_limit: 0}
     - - 7
-      - 6
-      - {speed_limit: 0}
-    - - 6
-      - 8
-      - {speed_limit: 0}
-    - - 8
       - 6
       - {speed_limit: 0}
     - - 8
@@ -56,61 +50,67 @@ levels:
     - - 9
       - 8
       - {speed_limit: 0}
-    - - 5
+    - - 8
       - 10
       - {speed_limit: 0}
     - - 10
-      - 5
+      - 8
       - {speed_limit: 0}
-    - - 0
+    - - 6
       - 11
       - {speed_limit: 0}
     - - 11
-      - 0
+      - 6
       - {speed_limit: 0}
-    - - 0
-      - 12
+    - - 11
+      - 8
+      - {speed_limit: 0}
+    - - 8
+      - 11
       - {speed_limit: 0}
     - - 12
-      - 0
+      - 11
+      - {speed_limit: 0}
+    - - 11
+      - 12
       - {speed_limit: 0}
     vertices:
-    - - 4.42
-      - -6.58
-      - {name: Home}
-    - - 6.89
-      - -8.18
-      - {name: Home1}
-    - - 8.23
-      - -9.23
+    - - 8.58
+      - -4.25
+      - {is_charger: true, name: ChargeRobot2}
+    - - 6.93
+      - -8.02
       - {name: Home2}
-    - - 14.91
-      - -13.70
-      - {name: p1}
-    - - 14.16
-      - -15.10
+    - - 5.24
+      - -7.91
+      - {is_charger: true, name: ChargeRobot1}
+    - - 8.48
+      - -8.25
+      - {name: Home1}
+    - - 17.57
+      - -9.19
+      - {is_passthrough_point: true,name: p1}
+    - - 17.24
+      - -11.24
       - {name: L1}
-    - - 16.89
-      - -14.94
-      - {name: p2}
-    - - 21.96
-      - -18.48
-      - {name: p3}
-    - - 23.56
-      - -16.35
-      - {name: L4}
-    - - 26.92
-      - -21.94
-      - {name: L5}
-    - - 23.59
-      - -27.56
-      - {name: L6}
-    - - 18.52
-      - -12.51
+    - - 19.85
+      - -9.45
+      - {is_passthrough_point: true, name: p2}
+    - - 19.42
+      - -12.88
       - {name: L2}
-    - - 5.48
-      - -8.16
-      - {name: Charge2, is_charger: true}
-    - - 6.21
-      - -6.92
-      - {name: Charge1, is_charger: true}
+    - - 31.90
+      - -10.93
+      - {is_passthrough_point: true, name: p4}
+    - - 31.74
+      - -16.67
+      - {name: L4}
+    - - 33.18
+      - -7.12
+      - {name: L5}
+    - - 25.86
+      - -10.30
+      - {is_passthrough_point: true, name: p3}
+    - - 25.50
+      - -12.95
+      - {name: L3}

@@ -31,8 +31,7 @@ import rmf_adapter.graph as graph
 import rmf_adapter.plan as plan
 
 from rmf_task_msgs.msg import TaskProfile, TaskType
-from rmf_task_msgs.msg import TaskProfile, TaskType, TaskSummary
-from rmf_fleet_msgs.msg import LaneRequest, ClosedLanes, FleetState
+from rmf_fleet_msgs.msg import LaneRequest, ClosedLanes
 
 from functools import partial
 
@@ -49,6 +48,59 @@ from .RobotClientAPI import RobotAPI
 # ------------------------------------------------------------------------------
 # Helper functions
 # ------------------------------------------------------------------------------
+
+
+def should_robot_accept_task(robot_name: str, task_description, api: 'RobotAPI') -> bool:
+    """
+    Check if a robot should accept a task based on:
+    1. Robot online status (must be online)
+    2. Home waypoint assignments (Home1 → robot1, Home2 → robot2)
+    
+    Uses reject-based logic: reject tasks that don't belong to this robot,
+    accept everything else.
+    
+    Args:
+        robot_name: Name of the robot
+        task_description: Task description from RMF
+        api: RobotAPI instance to check online status
+    
+    Returns:
+        True if robot should accept task, False otherwise
+    """
+    import re
+    
+    # First check: Robot must be online
+    if not api.is_robot_online(robot_name):
+        print(f"[TaskFilter] {robot_name} REJECTED task (offline)")
+        return False
+    
+    # Extract robot number from robot name (e.g., "robot1" -> "1")
+    robot_num_match = re.search(r'\d+', robot_name)
+    if not robot_num_match:
+        print(f"[TaskFilter] {robot_name} ACCEPTED task (no robot number)")
+        return True  # If no number in robot name, accept all tasks
+    
+    robot_number = robot_num_match.group()
+    
+    # Check if task involves Home waypoints
+    task_str = str(task_description)
+    print(f"[TaskFilter] {robot_name} (robot{robot_number}) checking task: {task_str[:100]}...")
+    
+    # Reject-based logic: Reject tasks with Home waypoints that don't belong to this robot
+    # If task mentions Home1 and robot is NOT robot1, reject
+    if 'Home1' in task_str and robot_number != '1':
+        print(f"[TaskFilter] {robot_name} REJECTED task (Home1 belongs to robot1)")
+        return False
+    
+    # If task mentions Home2 and robot is NOT robot2, reject
+    if 'Home2' in task_str and robot_number != '2':
+        print(f"[TaskFilter] {robot_name} REJECTED task (Home2 belongs to robot2)")
+        return False
+    
+    # Accept all other tasks (including Home tasks that match this robot)
+    print(f"[TaskFilter] {robot_name} ACCEPTED task")
+    return True
+
 
 
 def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
@@ -139,18 +191,8 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
     # ----------------------------------------------------------------------
     # Task acceptance
     # ----------------------------------------------------------------------
-    # Accept ALL tasks (loop, delivery, patrol, clean, etc.) while debugging.
-    # Accept ALL tasks (loop, delivery, patrol, clean, etc.) while debugging.
-    def _task_request_check(msg: TaskProfile):
-        node.get_logger().info(
-            f"Fleet [{fleet_name}] received task request "
-            f"id=[{msg.task_id}] type=[{msg.description.task_type}]"
-        )
-        return True
-
-    # Keep callback alive
-    node.task_request_check = _task_request_check
-    fleet_handle.accept_task_requests(_task_request_check)
+    # Task acceptance is now handled per-robot (see robot initialization loop below)
+    # This allows each robot to filter tasks based on Home waypoint assignments
 
     # ----------------------------------------------------------------------
     # Teleop action configuration
@@ -210,9 +252,11 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
 
     # Extract robot names from config
     robot_names = list(config_yaml['robots'].keys())
-    node.get_logger().info(f"Initializing RobotAPI for robots: {robot_names}")
-
-    api = RobotAPI(node, robot_names)
+    # Initialize RobotAPI with waypoint CSV path and reference coordinates
+    waypoint_csv_path = fleet_config.get('waypoint_csv_path')
+    reference_coordinates = config_yaml.get('reference_coordinates')
+    api = RobotAPI(node, robot_names, waypoint_csv_path=waypoint_csv_path, 
+                   reference_coordinates=reference_coordinates)
 
     # ----------------------------------------------------------------------
     # Initialize robots directly from config (no HTTP discovery)
@@ -262,6 +306,7 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
 
         if robot.initialized:
             robots[robot_name] = robot
+            
             fleet_handle.add_robot(
                 robot,
                 robot_name,
@@ -269,11 +314,52 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
                 [start],
                 partial(_updater_inserter, robot)
             )
+            
             node.get_logger().info(
                 f"Successfully added new robot: {robot_name}")
         else:
             node.get_logger().error(
                 f"Failed to initialize robot: {robot_name}")
+
+    # ----------------------------------------------------------------------
+    # Fleet-level task acceptance callback
+    # ----------------------------------------------------------------------
+    # This callback is set ONCE for the entire fleet, not per-robot.
+    # It checks all robots and accepts the task if any suitable online robot
+    # can handle it.
+    def _fleet_task_request_check(msg: TaskProfile):
+        """
+        Fleet-level task acceptance callback.
+        Checks all robots and accepts if any online robot can handle the task.
+        """
+        task_str = str(msg.description)
+        
+        # Check each robot to see if it should accept this task
+        for r_name in robots.keys():
+            should_accept = should_robot_accept_task(r_name, msg.description, api)
+            is_online = api.is_robot_online(r_name)
+            
+            if should_accept:
+                node.get_logger().info(
+                    f"Fleet accepting task id=[{msg.task_id}] "
+                    f"type=[{msg.description.task_type}] for robot [{r_name}] "
+                    f"(online={is_online})"
+                )
+                return True
+        
+        # No robot can accept this task
+        node.get_logger().info(
+            f"Fleet REJECTING task id=[{msg.task_id}] "
+            f"type=[{msg.description.task_type}] - no suitable online robot available"
+        )
+        return False
+    
+    # Set the fleet-level callback ONCE after all robots are initialized
+    fleet_handle.accept_task_requests(_fleet_task_request_check)
+    node.get_logger().info(
+        f"Fleet-level task acceptance callback configured for {len(robots)} robots"
+    )
+
 
     # ----------------------------------------------------------------------
     # Lane closure handling (unchanged)
@@ -327,77 +413,13 @@ def initialize_fleet(config_yaml, nav_graph_path, node, use_sim_time):
 
 
 # ------------------------------------------------------------------------------
-# QoS Republisher
-# ------------------------------------------------------------------------------
-class QoSRepublisher(rclpy.node.Node):
-    def __init__(self, fleet_name):
-        super().__init__(f'{fleet_name}_qos_republisher',
-                         use_global_arguments=False)
-
-        # QoS Profiles
-        transient_qos = QoSProfile(
-            history=History.KEEP_LAST,
-            depth=1,
-            reliability=Reliability.RELIABLE,
-            durability=Durability.TRANSIENT_LOCAL)
-
-        volatile_qos = QoSProfile(
-            history=History.KEEP_LAST,
-            depth=1,
-            reliability=Reliability.RELIABLE,
-            durability=Durability.VOLATILE)
-
-        # Fleet State Republishing
-        self.fleet_state_pub = self.create_publisher(
-            FleetState,
-            'fleet_states',
-            transient_qos)
-
-        self.create_subscription(
-            FleetState,
-            'fleet_states_internal',
-            self.fleet_state_cb,
-            volatile_qos)
-
-        # Task Summary Republishing
-        self.task_summary_pub = self.create_publisher(
-            TaskSummary,
-            'task_summaries',
-            transient_qos)
-
-        self.create_subscription(
-            TaskSummary,
-            'task_summaries_internal',
-            self.task_summary_cb,
-            volatile_qos)
-
-    def fleet_state_cb(self, msg):
-        self.fleet_state_pub.publish(msg)
-
-    def task_summary_cb(self, msg):
-        self.task_summary_pub.publish(msg)
-
-
-# ------------------------------------------------------------------------------
 # Main
 # ------------------------------------------------------------------------------
 def main(argv=sys.argv):
     # Init rclpy and adapter
-    # Init rclpy and adapter
-    # Inject remappings to internal topics for the C++ adapter
-    args_without_ros = rclpy.utilities.remove_ros_args(argv)
-
-    argv_with_remaps = argv + [
-        '--ros-args',
-        '-r', 'fleet_states:=fleet_states_internal',
-        '-r', 'task_summaries:=task_summaries_internal'
-    ]
-
-    rclpy.init(args=argv_with_remaps)
-
-    # Update sys.argv so adpt.init_rclcpp() sees the remappings
-    sys.argv = argv_with_remaps
+    rclpy.init(args=argv)
     adpt.init_rclcpp()
+    args_without_ros = rclpy.utilities.remove_ros_args(argv)
 
     parser = argparse.ArgumentParser(
         prog="fleet_adapter",
@@ -445,16 +467,11 @@ def main(argv=sys.argv):
     rclpy_executor = rclpy.executors.SingleThreadedExecutor()
     rclpy_executor.add_node(node)
 
-    # Create and add QoS Republisher
-    qos_republisher = QoSRepublisher(fleet_name)
-    rclpy_executor.add_node(qos_republisher)
-
     # Start the fleet adapter
     rclpy_executor.spin()
 
     # Shutdown
     node.destroy_node()
-    qos_republisher.destroy_node()
     rclpy_executor.shutdown()
     rclpy.shutdown()
 

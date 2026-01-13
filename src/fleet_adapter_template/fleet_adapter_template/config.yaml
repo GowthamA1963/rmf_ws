@@ -1,6 +1,6 @@
 rmf_fleet:
   name: "my_robot_fleet"
-  waypoint_csv_path: "/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template/fleet_adapter_template/final_goals.csv"
+  waypoint_csv_path: "/home/robot1/rmf_ws/src/fleet_adapter_template/fleet_adapter_template/final_goals.csv"
   limits:
     linear: [1.2, 0.2]      # vel, accel
     angular: [0.8, 0.2]     # vel, accel
@@ -8,6 +8,7 @@ rmf_fleet:
     footprint: 0.3
     vicinity: 0.5
   reversible: true
+  robot_availability_timeout: 60.0  # Seconds without AMCL pose before marking robot offline (increased for stationary robots)
 
   battery_system:
     voltage: 24.0
@@ -47,18 +48,18 @@ reference_coordinates:
     - [-0.04634631221209842, 0.03840620011662053, 0]
 
 robots:
-  # robot1:
-  #   rmf_config:
-  #     start:
-  #       map_name: "L1"
-  #       waypoint: "Home1"
-  #       orientation: 0.0
-  #     charger:
-  #       waypoint: "Charge1"
-  #     robot_state_update_frequency: 2
+  robot1:
+    rmf_config:
+      start:
+        map_name: "L1"
+        waypoint: "Home1"
+        orientation: 0.0
+      charger:
+        waypoint: "Charge1"
+      robot_state_update_frequency: 2
 
-  #   robot_config:
-  #     max_delay: 5
+    robot_config:
+      max_delay: 5
 
   robot2:
     rmf_config:
@@ -72,3 +73,7 @@ robots:
 
     robot_config:
       max_delay: 5
+
+
+
+

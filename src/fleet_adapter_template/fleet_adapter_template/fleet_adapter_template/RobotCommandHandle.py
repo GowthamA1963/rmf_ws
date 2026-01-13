@@ -94,6 +94,16 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
         self.api = api
         self.position = position  # (x,y,theta) in RMF crs (meters,radians)
         self.initialized = False
+
+        # Breakdown detection
+        self.breakdown_detection = {
+            'nav_failure_count': 0,
+            'nav_failure_threshold': 3,
+            'action_failure_count': 0,
+            'action_failure_threshold': 2,
+            'last_breakdown_check': None
+        }
+        self.breakdown_callback = None  # Set by fleet adapter
         self.state = RobotState.IDLE
         self.dock_name = ""
         # used for time comparison with Plan::Waypoint::time
@@ -294,7 +304,11 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
             self._quit_path_event.clear()
             self.clear()
 
-            self.node.get_logger().info(f"Received new path for {self.name}")
+            self.node.get_logger().info(f"Received new path for {self.name} with {len(waypoints)} waypoints")
+            if len(waypoints) > 0:
+                 wp_start = waypoints[0].position
+                 wp_end = waypoints[-1].position
+                 self.node.get_logger().info(f"  Path start: ({wp_start[0]:.2f}, {wp_start[1]:.2f}), End: ({wp_end[0]:.2f}, {wp_end[1]:.2f})")
 
             self.remaining_waypoints = self.filter_waypoints(waypoints)
             assert path_finished_callback is not None
@@ -315,11 +329,69 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                         )
                         return
 
+                    # Check if robot is online before proceeding with any navigation logic
+                    if not self.api.is_robot_online(self.name):
+                        # Track when robot first went offline during this navigation
+                        if not hasattr(self, '_offline_since'):
+                            self._offline_since = {}
+                        
+                        if self.name not in self._offline_since:
+                            self._offline_since[self.name] = self.node.get_clock().now()
+                            self.node.get_logger().warn(
+                                f"[{self.name}] Robot is OFFLINE during navigation. Will abort if offline for 30s..."
+                            )
+                        else:
+                            offline_duration = (self.node.get_clock().now() - self._offline_since[self.name]).nanoseconds / 1e9
+                            if offline_duration > 30.0:  # 30 second timeout
+                                self.node.get_logger().error(
+                                    f"[{self.name}] Robot offline for {offline_duration:.1f}s. Aborting navigation."
+                                )
+                                return  # Exit the _follow_path thread
+                            
+                            self.node.get_logger().warn(
+                                f"[{self.name}] Robot OFFLINE for {offline_duration:.1f}s. Pausing...",
+                                throttle_duration_sec=5.0
+                            )
+                        self.sleep_for(1.0)
+                        continue
+                    else:
+                        # Robot is back online - clear offline timer
+                        if hasattr(self, '_offline_since') and self.name in self._offline_since:
+                            del self._offline_since[self.name]
+
                     # State machine
                     if self.state == RobotState.IDLE or target_pose is None:
                         # Assign the next waypoint
                         self.target_waypoint = self.remaining_waypoints[0]
                         path_index = self.remaining_waypoints[0].index
+
+                        # Check if this is the FINAL waypoint in the path
+                        is_final_waypoint = (len(self.remaining_waypoints) == 1)
+
+                        if not is_final_waypoint:
+                            # This is an intermediate waypoint - skip navigation
+                            # Just mark it as completed and move to the next one
+                            self.node.get_logger().info(
+                                f"[{self.name}] ⏭️  Skipping intermediate waypoint at "
+                                f"path index {path_index} (graph_index: {self.target_waypoint.graph_index}). "
+                                f"Remaining waypoints: {len(self.remaining_waypoints)}"
+                            )
+
+                            # Update tracking to reflect we've passed this waypoint
+                            graph_index = self.target_waypoint.graph_index
+                            if graph_index is not None:
+                                self.last_known_waypoint_index = graph_index
+
+                            # Remove this waypoint and continue to next
+                            self.remaining_waypoints = self.remaining_waypoints[1:]
+                            # Stay in IDLE state to process next waypoint immediately
+                            continue
+
+                        # This is the FINAL waypoint - send navigation command
+                        self.node.get_logger().info(
+                            f"[{self.name}] 🎯 Final waypoint detected at path index {path_index}. "
+                            f"Sending navigation command."
+                        )
 
                         # Move robot to next waypoint
                         target_pose = self.target_waypoint.position
@@ -327,7 +399,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                         theta = target_pose[2]
                         speed_limit = \
                             self.get_speed_limit(self.target_waypoint)
-                        
+
                         # Get waypoint name if available
                         waypoint_name = None
                         if self.target_waypoint.graph_index is not None:
@@ -343,7 +415,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                                 # Method 3: Try to get name from graph keys
                                 elif hasattr(self.graph, 'keys') and self.target_waypoint.graph_index in self.graph.keys:
                                     waypoint_name = self.graph.keys[self.target_waypoint.graph_index]
-                                
+
                                 if waypoint_name:
                                     self.node.get_logger().info(
                                         f"[{self.name}] Extracted waypoint name: '{waypoint_name}' "
@@ -381,6 +453,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                                 f"[{x:.0f}, {y:.0f}, {theta:.0f}]. "
                                 f"Retrying..."
                             )
+                            self._handle_navigation_failure()
                             self._quit_path_event.wait(0.1)
 
                     elif self.state == RobotState.MOVING:
@@ -398,6 +471,7 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
                                     f"Robot [{self.name}] has reached the "
                                     f"destination for cmd_id {cmd_id}"
                                 )
+                                self._handle_navigation_success()
                                 self.state = RobotState.IDLE
                                 graph_index = self.target_waypoint.graph_index
                                 if graph_index is not None:
@@ -566,10 +640,44 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
 
     def update(self):
         while rclpy.ok():
-            self.position = self.get_position()
-            self.battery_soc = self.get_battery_soc()
+            # Always update state for web dashboard visibility
+            # For offline robots, we'll use last known position
+            is_online = self.api.is_robot_online(self.name)
+            
+            if is_online:
+                # Robot is online - get fresh position and battery data
+                self.position = self.get_position()
+                self.battery_soc = self.get_battery_soc()
+            # else: Robot is offline - keep using last known position and battery
+            
+            # Manage commission state based on online status
+            if self.update_handle is not None:
+                # Check current commission state
+                is_commissioned = self.update_handle.unstable_is_commissioned()
+                
+                if is_online and not is_commissioned:
+                    # Robot came online - recommission it
+                    self.node.get_logger().info(
+                        f"[{self.name}] Recommissioning robot (now online)"
+                    )
+                    self.update_handle.unstable_recommission()
+                elif not is_online and is_commissioned:
+                    # Robot went offline - decommission it
+                    self.node.get_logger().warn(
+                        f"[{self.name}] Decommissioning robot (now offline)"
+                    )
+                    self.update_handle.unstable_decommission()
+                    
+                    # Interrupt any active navigation to allow task reassignment
+                    self.node.get_logger().warn(
+                        f"[{self.name}] Interrupting active tasks due to offline status"
+                    )
+                    self.interrupt()  # This stops the follow_new_path thread
+                    
+            # Always update state so web dashboard shows robot (online or offline)
             if self.update_handle is not None:
                 self.update_state()
+            
             sleep_duration = float(1.0 / self.update_frequency)
             self.sleep_for(sleep_duration)
 
@@ -769,6 +877,84 @@ class RobotCommandHandle(adpt.RobotCommandHandle):
             if fleet.fleet_name == self.fleet_name:
                 for dock in fleet.params:
                     self.docks[dock.start] = dock.path
+
+
+    # --------------------------------------------------------------------------
+    # Breakdown detection
+    # --------------------------------------------------------------------------
+
+    def check_for_breakdown(self):
+        """
+        Check if robot has experienced a breakdown.
+        
+        Returns:
+            tuple: (has_breakdown: bool, reason: str or None)
+        """
+        # Check navigation failures
+        if self.breakdown_detection['nav_failure_count'] >=            self.breakdown_detection['nav_failure_threshold']:
+            return True, "consecutive_navigation_failures"
+        
+        # Check action failures
+        if self.breakdown_detection['action_failure_count'] >=            self.breakdown_detection['action_failure_threshold']:
+            return True, "consecutive_action_failures"
+        
+        # Check connection loss during active task
+        if self.state == RobotState.MOVING and not self.api.is_robot_online(self.name):
+            return True, "connection_loss_during_task"
+        
+        return False, None
+
+    def _handle_navigation_failure(self):
+        """Track navigation failure and check for breakdown."""
+        self.breakdown_detection['nav_failure_count'] += 1
+        
+        # Suppressed to reduce log noise - failure count still tracked for breakdown detection
+        # self.node.get_logger().warn(
+        #     f"[{self.name}] Navigation failure count: "
+        #     f"{self.breakdown_detection['nav_failure_count']}/"
+        #     f"{self.breakdown_detection['nav_failure_threshold']}"
+        # )
+        
+        has_breakdown, reason = self.check_for_breakdown()
+        if has_breakdown and self.breakdown_callback:
+            self.node.get_logger().error(
+                f"🔴 BREAKDOWN DETECTED for [{self.name}]: {reason}"
+            )
+            self.breakdown_callback(self.name, reason)
+
+    def _handle_navigation_success(self):
+        """Reset navigation failure counter on success."""
+        if self.breakdown_detection['nav_failure_count'] > 0:
+            self.node.get_logger().info(
+                f"[{self.name}] Navigation succeeded, resetting failure count"
+            )
+        self.breakdown_detection['nav_failure_count'] = 0
+
+    def _handle_action_failure(self):
+        """Track action failure and check for breakdown."""
+        self.breakdown_detection['action_failure_count'] += 1
+        
+        self.node.get_logger().warn(
+            f"[{self.name}] Action failure count: "
+            f"{self.breakdown_detection['action_failure_count']}/"
+            f"{self.breakdown_detection['action_failure_threshold']}"
+        )
+        
+        has_breakdown, reason = self.check_for_breakdown()
+        if has_breakdown and self.breakdown_callback:
+            self.node.get_logger().error(
+                f"🔴 BREAKDOWN DETECTED for [{self.name}]: {reason}"
+            )
+            self.breakdown_callback(self.name, reason)
+
+    def _handle_action_success(self):
+        """Reset action failure counter on success."""
+        if self.breakdown_detection['action_failure_count'] > 0:
+            self.node.get_logger().info(
+                f"[{self.name}] Action succeeded, resetting failure count"
+            )
+        self.breakdown_detection['action_failure_count'] = 0
+
 
     def mode_request_cb(self, msg):
         if (not msg.fleet_name or msg.fleet_name != self.fleet_name or

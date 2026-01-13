@@ -70,14 +70,29 @@ def process_building_map(
 
 def convert_fleet_state(msg: RmfFleetState) -> FleetState:
     robots = {}
+    # Get current ROS time (not system time) for proper comparison
+    current_ros_time = ros_node().get_clock().now()
+    current_time_sec = current_ros_time.nanoseconds / 1e9
+    
     for r in msg.robots:
-        status = RobotStatus.idle
-        if r.mode.mode == RmfRobotMode.MODE_MOVING:
-            status = RobotStatus.working
-        elif r.mode.mode == RmfRobotMode.MODE_CHARGING:
-            status = RobotStatus.charging
-        elif r.mode.mode == RmfRobotMode.MODE_ADAPTER_ERROR:
-            status = RobotStatus.error
+        # Check if robot location timestamp is recent (within last 5 seconds)
+        # Decommissioned robots or robots with Nav2 down will have stale timestamps
+        location_time = r.location.t.sec + (r.location.t.nanosec / 1e9) if r.location else 0
+        time_since_update = current_time_sec - location_time
+        is_recently_updated = time_since_update < 5.0  # 5 second threshold
+        
+        # Default to OFFLINE if location is stale (decommissioned or Nav2 down)
+        # Otherwise default to IDLE (which will be shown as ONLINE in the dashboard)
+        status = RobotStatus.idle if is_recently_updated else RobotStatus.offline
+        
+        if is_recently_updated:
+            # Only check mode if robot is actively updating
+            if r.mode.mode == RmfRobotMode.MODE_MOVING:
+                status = RobotStatus.working
+            elif r.mode.mode == RmfRobotMode.MODE_CHARGING:
+                status = RobotStatus.charging
+            elif r.mode.mode == RmfRobotMode.MODE_ADAPTER_ERROR:
+                status = RobotStatus.error
 
         loc = None
         if r.location:
